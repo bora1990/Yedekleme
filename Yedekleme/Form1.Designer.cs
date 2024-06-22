@@ -41,8 +41,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.checkBoxTumu = new System.Windows.Forms.CheckBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnDriveDisconnect = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -63,26 +63,28 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.mskGunSil = new System.Windows.Forms.MaskedTextBox();
-            this.label12 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.label10 = new System.Windows.Forms.Label();
             this.pictureBoxBackup = new System.Windows.Forms.PictureBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.metroSetControlBox2 = new MetroSet_UI.Controls.MetroSetControlBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.metroSetDefaultButton1 = new MetroSet_UI.Controls.MetroSetDefaultButton();
             this.metroSetDefaultButton2 = new MetroSet_UI.Controls.MetroSetDefaultButton();
+            this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
+            this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.metroSil = new MetroFramework.Controls.MetroButton();
+            this.DateTimePick = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxConnect)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDisconnect)).BeginInit();
@@ -97,6 +99,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox3
@@ -115,7 +119,7 @@
             this.txtPassword.Location = new System.Drawing.Point(128, 112);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(195, 24);
+            this.txtPassword.Size = new System.Drawing.Size(205, 24);
             this.txtPassword.TabIndex = 2;
             // 
             // cmbServerName
@@ -123,7 +127,7 @@
             this.cmbServerName.FormattingEnabled = true;
             this.cmbServerName.Location = new System.Drawing.Point(128, 50);
             this.cmbServerName.Name = "cmbServerName";
-            this.cmbServerName.Size = new System.Drawing.Size(195, 26);
+            this.cmbServerName.Size = new System.Drawing.Size(205, 26);
             this.cmbServerName.TabIndex = 0;
             // 
             // label6
@@ -150,14 +154,14 @@
             // 
             this.textboxUser.Location = new System.Drawing.Point(128, 82);
             this.textboxUser.Name = "textboxUser";
-            this.textboxUser.Size = new System.Drawing.Size(195, 24);
+            this.textboxUser.Size = new System.Drawing.Size(205, 24);
             this.textboxUser.TabIndex = 1;
             // 
             // pictureBoxConnect
             // 
             this.pictureBoxConnect.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxConnect.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxConnect.Image")));
-            this.pictureBoxConnect.Location = new System.Drawing.Point(343, 69);
+            this.pictureBoxConnect.Location = new System.Drawing.Point(353, 68);
             this.pictureBoxConnect.Name = "pictureBoxConnect";
             this.pictureBoxConnect.Size = new System.Drawing.Size(35, 35);
             this.pictureBoxConnect.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -169,7 +173,7 @@
             // 
             this.pictureBoxDisconnect.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxDisconnect.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxDisconnect.Image")));
-            this.pictureBoxDisconnect.Location = new System.Drawing.Point(343, 69);
+            this.pictureBoxDisconnect.Location = new System.Drawing.Point(353, 68);
             this.pictureBoxDisconnect.Name = "pictureBoxDisconnect";
             this.pictureBoxDisconnect.Size = new System.Drawing.Size(35, 35);
             this.pictureBoxDisconnect.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -193,7 +197,7 @@
             this.groupBox2.Controls.Add(this.checkedListBox1);
             this.groupBox2.Location = new System.Drawing.Point(9, 295);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(220, 233);
+            this.groupBox2.Size = new System.Drawing.Size(220, 236);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Veritabanı Seçimi";
@@ -209,6 +213,15 @@
             this.checkBoxTumu.UseVisualStyleBackColor = true;
             this.checkBoxTumu.CheckedChanged += new System.EventHandler(this.checkBoxTumu_CheckedChanged);
             // 
+            // checkedListBox1
+            // 
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Location = new System.Drawing.Point(6, 58);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.ScrollAlwaysVisible = true;
+            this.checkedListBox1.Size = new System.Drawing.Size(208, 175);
+            this.checkedListBox1.TabIndex = 4;
+            // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.White;
@@ -216,22 +229,13 @@
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(9, 514);
+            this.button1.Location = new System.Drawing.Point(9, 534);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(220, 44);
+            this.button1.Size = new System.Drawing.Size(220, 102);
             this.button1.TabIndex = 10;
             this.button1.Text = "Hemen Yedekle";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // checkedListBox1
-            // 
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Location = new System.Drawing.Point(6, 58);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.ScrollAlwaysVisible = true;
-            this.checkedListBox1.Size = new System.Drawing.Size(208, 156);
-            this.checkedListBox1.TabIndex = 4;
             // 
             // groupBox3
             // 
@@ -361,7 +365,7 @@
             this.metroSetControlBox1.CloseNormalForeColor = System.Drawing.Color.Gray;
             this.metroSetControlBox1.DisabledForeColor = System.Drawing.Color.DimGray;
             this.metroSetControlBox1.IsDerivedStyle = true;
-            this.metroSetControlBox1.Location = new System.Drawing.Point(615, -28);
+            this.metroSetControlBox1.Location = new System.Drawing.Point(610, -28);
             this.metroSetControlBox1.MaximizeBox = false;
             this.metroSetControlBox1.MaximizeHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.metroSetControlBox1.MaximizeHoverForeColor = System.Drawing.Color.Gray;
@@ -415,7 +419,7 @@
             // 
             this.pictureBoxBrowse.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxBrowse.Image = global::Yedekleme.Properties.Resources.output_onlinepngtools__1_;
-            this.pictureBoxBrowse.Location = new System.Drawing.Point(346, 29);
+            this.pictureBoxBrowse.Location = new System.Drawing.Point(356, 29);
             this.pictureBoxBrowse.Name = "pictureBoxBrowse";
             this.pictureBoxBrowse.Size = new System.Drawing.Size(35, 35);
             this.pictureBoxBrowse.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -427,7 +431,7 @@
             // 
             this.textBoxLocation.Location = new System.Drawing.Point(11, 37);
             this.textBoxLocation.Name = "textBoxLocation";
-            this.textBoxLocation.Size = new System.Drawing.Size(315, 24);
+            this.textBoxLocation.Size = new System.Drawing.Size(339, 24);
             this.textBoxLocation.TabIndex = 9;
             // 
             // openFileDialog1
@@ -442,9 +446,6 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.metroSil);
-            this.groupBox4.Controls.Add(this.mskGunSil);
-            this.groupBox4.Controls.Add(this.label12);
             this.groupBox4.Controls.Add(this.label7);
             this.groupBox4.Controls.Add(this.metroLabel1);
             this.groupBox4.Controls.Add(this.label10);
@@ -452,6 +453,7 @@
             this.groupBox4.Controls.Add(this.pictureBoxBackup);
             this.groupBox4.Controls.Add(this.label9);
             this.groupBox4.Controls.Add(this.label1);
+            this.groupBox4.Controls.Add(this.textBox3);
             this.groupBox4.Controls.Add(this.textBox2);
             this.groupBox4.Controls.Add(this.label8);
             this.groupBox4.Controls.Add(this.textBox1);
@@ -459,35 +461,17 @@
             this.groupBox4.Controls.Add(this.folderIdtxt);
             this.groupBox4.Location = new System.Drawing.Point(235, 295);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(483, 233);
+            this.groupBox4.Size = new System.Drawing.Size(483, 236);
             this.groupBox4.TabIndex = 7;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Planlama";
-            // 
-            // mskGunSil
-            // 
-            this.mskGunSil.Location = new System.Drawing.Point(68, 180);
-            this.mskGunSil.Mask = "00";
-            this.mskGunSil.Name = "mskGunSil";
-            this.mskGunSil.Size = new System.Drawing.Size(26, 24);
-            this.mskGunSil.TabIndex = 19;
-            this.mskGunSil.ValidatingType = typeof(int);
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(100, 183);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(333, 20);
-            this.label12.TabIndex = 17;
-            this.label12.Text = "Gün  Önceki Verileri Bilgisayarımdan";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.White;
             this.label7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label7.Location = new System.Drawing.Point(215, 139);
+            this.label7.Location = new System.Drawing.Point(215, 168);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(135, 20);
             this.label7.TabIndex = 14;
@@ -517,7 +501,7 @@
             this.pictureBoxBackup.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBoxBackup.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBoxBackup.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxBackup.Image")));
-            this.pictureBoxBackup.Location = new System.Drawing.Point(356, 118);
+            this.pictureBoxBackup.Location = new System.Drawing.Point(356, 147);
             this.pictureBoxBackup.Name = "pictureBoxBackup";
             this.pictureBoxBackup.Size = new System.Drawing.Size(50, 50);
             this.pictureBoxBackup.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -534,6 +518,18 @@
             this.label9.TabIndex = 11;
             this.label9.Text = "Saat :";
             // 
+            // textBox3
+            // 
+            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox3.Cursor = System.Windows.Forms.Cursors.Default;
+            this.textBox3.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.textBox3.Location = new System.Drawing.Point(9, 203);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
+            this.textBox3.Size = new System.Drawing.Size(471, 27);
+            this.textBox3.TabIndex = 13;
+            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(234, 62);
@@ -546,7 +542,7 @@
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.White;
             this.label8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label8.Location = new System.Drawing.Point(43, 139);
+            this.label8.Location = new System.Drawing.Point(43, 168);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(90, 20);
             this.label8.TabIndex = 3;
@@ -563,24 +559,13 @@
             // 
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox2.Image = global::Yedekleme.Properties.Resources.output_onlinepngtools;
-            this.pictureBox2.Location = new System.Drawing.Point(139, 118);
+            this.pictureBox2.Location = new System.Drawing.Point(139, 147);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(50, 50);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
-            // 
-            // textBox3
-            // 
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox3.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox3.Location = new System.Drawing.Point(235, 534);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(480, 24);
-            this.textBox3.TabIndex = 13;
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // timer2
             // 
@@ -605,7 +590,7 @@
             this.metroSetControlBox2.CloseNormalForeColor = System.Drawing.Color.Gray;
             this.metroSetControlBox2.DisabledForeColor = System.Drawing.Color.DimGray;
             this.metroSetControlBox2.IsDerivedStyle = true;
-            this.metroSetControlBox2.Location = new System.Drawing.Point(618, 29);
+            this.metroSetControlBox2.Location = new System.Drawing.Point(613, 29);
             this.metroSetControlBox2.MaximizeBox = false;
             this.metroSetControlBox2.MaximizeHoverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.metroSetControlBox2.MaximizeHoverForeColor = System.Drawing.Color.Gray;
@@ -651,7 +636,7 @@
             this.metroSetDefaultButton1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.metroSetDefaultButton1.HoverTextColor = System.Drawing.Color.White;
             this.metroSetDefaultButton1.IsDerivedStyle = true;
-            this.metroSetDefaultButton1.Location = new System.Drawing.Point(422, 29);
+            this.metroSetDefaultButton1.Location = new System.Drawing.Point(422, 27);
             this.metroSetDefaultButton1.Name = "metroSetDefaultButton1";
             this.metroSetDefaultButton1.NormalBorderColor = System.Drawing.Color.Silver;
             this.metroSetDefaultButton1.NormalColor = System.Drawing.Color.Silver;
@@ -659,7 +644,7 @@
             this.metroSetDefaultButton1.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.metroSetDefaultButton1.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.metroSetDefaultButton1.PressTextColor = System.Drawing.Color.White;
-            this.metroSetDefaultButton1.Size = new System.Drawing.Size(108, 27);
+            this.metroSetDefaultButton1.Size = new System.Drawing.Size(74, 27);
             this.metroSetDefaultButton1.Style = MetroSet_UI.Enums.Style.Custom;
             this.metroSetDefaultButton1.StyleManager = null;
             this.metroSetDefaultButton1.TabIndex = 19;
@@ -678,7 +663,7 @@
             this.metroSetDefaultButton2.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.metroSetDefaultButton2.HoverTextColor = System.Drawing.Color.White;
             this.metroSetDefaultButton2.IsDerivedStyle = true;
-            this.metroSetDefaultButton2.Location = new System.Drawing.Point(568, 29);
+            this.metroSetDefaultButton2.Location = new System.Drawing.Point(591, 29);
             this.metroSetDefaultButton2.Name = "metroSetDefaultButton2";
             this.metroSetDefaultButton2.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.metroSetDefaultButton2.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
@@ -686,7 +671,7 @@
             this.metroSetDefaultButton2.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.metroSetDefaultButton2.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.metroSetDefaultButton2.PressTextColor = System.Drawing.Color.White;
-            this.metroSetDefaultButton2.Size = new System.Drawing.Size(114, 27);
+            this.metroSetDefaultButton2.Size = new System.Drawing.Size(80, 27);
             this.metroSetDefaultButton2.Style = MetroSet_UI.Enums.Style.Light;
             this.metroSetDefaultButton2.StyleManager = null;
             this.metroSetDefaultButton2.TabIndex = 20;
@@ -695,38 +680,87 @@
             this.metroSetDefaultButton2.ThemeName = "MetroLite";
             this.metroSetDefaultButton2.Click += new System.EventHandler(this.metroSetDefaultButton2_Click);
             // 
+            // dockManager1
+            // 
+            this.dockManager1.Form = this;
+            this.dockManager1.TopZIndexControls.AddRange(new string[] {
+            "DevExpress.XtraBars.BarDockControl",
+            "DevExpress.XtraBars.StandaloneBarDockControl",
+            "System.Windows.Forms.MenuStrip",
+            "System.Windows.Forms.StatusStrip",
+            "System.Windows.Forms.StatusBar",
+            "DevExpress.XtraBars.Ribbon.RibbonStatusBar",
+            "DevExpress.XtraBars.Ribbon.RibbonControl",
+            "DevExpress.XtraBars.Navigation.OfficeNavigationBar",
+            "DevExpress.XtraBars.Navigation.TileNavPane",
+            "DevExpress.XtraBars.TabFormControl",
+            "DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl",
+            "DevExpress.XtraBars.ToolbarForm.ToolbarFormControl"});
+            // 
+            // standaloneBarDockControl1
+            // 
+            this.standaloneBarDockControl1.CausesValidation = false;
+            this.standaloneBarDockControl1.Location = new System.Drawing.Point(717, 353);
+            this.standaloneBarDockControl1.Manager = null;
+            this.standaloneBarDockControl1.Name = "standaloneBarDockControl1";
+            this.standaloneBarDockControl1.Size = new System.Drawing.Size(8, 8);
+            this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.button4);
+            this.panel2.Controls.Add(this.button3);
+            this.panel2.Controls.Add(this.DateTimePick);
+            this.panel2.Location = new System.Drawing.Point(235, 537);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(483, 102);
+            this.panel2.TabIndex = 26;
+            // 
+            // button4
+            // 
+            this.button4.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.button4.Location = new System.Drawing.Point(9, 70);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(456, 29);
+            this.button4.TabIndex = 2;
+            this.button4.Text = "Tarihinden Önceki Verileri Drive Klasöründen SİL";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click_1);
+            // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(374, 14);
+            this.button3.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.button3.Location = new System.Drawing.Point(9, 36);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 21;
-            this.button3.Text = "button3";
+            this.button3.Size = new System.Drawing.Size(461, 28);
+            this.button3.TabIndex = 1;
+            this.button3.Text = "Tarihinden Önceki Verileri Bilgisayarımdan SİL";
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
-            // metroSil
+            // DateTimePick
             // 
-            this.metroSil.Location = new System.Drawing.Point(439, 183);
-            this.metroSil.Name = "metroSil";
-            this.metroSil.Size = new System.Drawing.Size(31, 23);
-            this.metroSil.TabIndex = 20;
-            this.metroSil.Text = "SİL";
+            this.DateTimePick.CalendarFont = new System.Drawing.Font("Corbel", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.DateTimePick.Location = new System.Drawing.Point(120, 3);
+            this.DateTimePick.Name = "DateTimePick";
+            this.DateTimePick.Size = new System.Drawing.Size(224, 24);
+            this.DateTimePick.TabIndex = 0;
+            this.DateTimePick.Value = new System.DateTime(2024, 1, 1, 0, 0, 0, 0);
             // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(728, 575);
+            this.ClientSize = new System.Drawing.Size(723, 640);
             this.ControlBox = false;
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.standaloneBarDockControl1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.metroSetDefaultButton2);
             this.Controls.Add(this.metroSetDefaultButton1);
             this.Controls.Add(this.metroSetControlBox2);
             this.Controls.Add(this.metroSetControlBox1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.textBox3);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -740,8 +774,10 @@
             this.MinimizeBox = false;
             this.Name = "Form1";
             this.Resizable = false;
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.Style = MetroFramework.MetroColorStyle.Teal;
-            this.Text = "SQL Server Yedekleme © Glopark";
+            this.Text = "SQL Server Backup Software";
             this.Theme = MetroFramework.MetroThemeStyle.Light;
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -763,8 +799,9 @@
             this.panel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -818,10 +855,12 @@
         private MetroSet_UI.Controls.MetroSetDefaultButton metroSetDefaultButton2;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.MaskedTextBox mskGunSil;
+        private DevExpress.XtraBars.Docking.DockManager dockManager1;
+        private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.DateTimePicker DateTimePick;
         private System.Windows.Forms.Button button3;
-        private MetroFramework.Controls.MetroButton metroSil;
+        private System.Windows.Forms.Button button4;
     }
 }
 

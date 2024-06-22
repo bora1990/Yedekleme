@@ -73,16 +73,13 @@ namespace Yedekleme
 
         private NotifyIcon notifyIcon;
         private ContextMenuStrip contextMenuStrip;
-
-
-
         private readonly DriveService service;
 
         private BackgroundWorker backgroundWorker;
 
         public Form1()
         {
-
+           
             //var saat = kuruluSaat;
             //string[] gunler = item;
             //gunler.
@@ -122,8 +119,6 @@ namespace Yedekleme
         {
             ApplyTheme(Themes.Theme.DarkBackColor, Themes.Theme.DarkForeColor);
         }
-
-
         private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             pictureBox3.Hide();
@@ -133,10 +128,10 @@ namespace Yedekleme
         {
 
         }
-   
+
         private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-          
+
 
             DataTable sqlServerInstances = SqlDataSourceEnumerator.Instance.GetDataSources();
 
@@ -162,12 +157,7 @@ namespace Yedekleme
                     });
                 }
             }
-
-           
-
         }
-
-    
         private void OnApplicationExit(object sender, EventArgs e)
         {
             // Uygulama kapanırken, isFirstRun değişkenini sıfırla
@@ -181,7 +171,7 @@ namespace Yedekleme
 
         private void Form1_Load(object sender, EventArgs e)
         {
-           
+
             RegistryKey regkey = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
             regkey.SetValue("Yedekleme", Application.ExecutablePath);
             regkey.Close();
@@ -555,7 +545,7 @@ namespace Yedekleme
                         checkedListBox1.SetItemChecked(index, true);
                     }
                 }
-                
+
 
                 pictureBoxBackup_Click(pictureBoxBackup, EventArgs.Empty);
 
@@ -567,8 +557,6 @@ namespace Yedekleme
             textBox3.ForeColor = Color.Black;
             textBox3.Text = "Copyright © Glopark ";
         }
-
-
         private void InitializeNotifyIcon()
         {
             notifyIcon = new NotifyIcon();
@@ -581,8 +569,8 @@ namespace Yedekleme
         {
             contextMenuStrip = new ContextMenuStrip();
             ToolStripMenuItem exitItem = new ToolStripMenuItem("Çıkış");
-            exitItem.Click += ExitItem_Click;
-            contextMenuStrip.Items.Add(exitItem);
+            
+            contextMenuStrip.Items.Add("Çıkış", null, (s, e) => Application.Exit());
             notifyIcon.ContextMenuStrip = contextMenuStrip;
         }
 
@@ -607,14 +595,10 @@ namespace Yedekleme
             base.OnFormClosing(e);
         }
 
-       
-
-
-
         //Servera Bağlanma
         private void pictureBoxConnect_Click(object sender, EventArgs e)
         {
-            
+
             try
             {
 
@@ -650,13 +634,13 @@ namespace Yedekleme
                         pictureBoxDisconnect.Visible = false;
                         pictureBoxDisconnect.Enabled = true;
                     }
-                                                   
+
                 }
-             
-                      
-                           
-                
-                           
+
+
+
+
+
                 checkedListBox1.Items.Clear();
                 sql = "select Name from master.sys.databases d WHERE d.database_id > 4; ";
                 _command = new SqlCommand(sql, _connection);
@@ -669,16 +653,16 @@ namespace Yedekleme
                 }
                 _connection.Close();
 
-              
+
             }
             catch (Exception)
             {
                 pictureBoxConnect.Visible = true;
                 pictureBoxDisconnect.Visible = false;
-                MessageBox.Show("Bağlantı hatası","Hata",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MessageBox.Show("Bağlantı hatası", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
-            
+
             //BaglanBaglantıKoparButon(sender, e);
 
         }
@@ -842,7 +826,7 @@ namespace Yedekleme
 
         //Plan Formunu Açma
         private void pictureBox2_Click(object sender, EventArgs e)
-        {        
+        {
             Plan plan = new Plan();
             plan.ShowDialog();
 
@@ -859,13 +843,13 @@ namespace Yedekleme
             int adjustedIndex = (dayOfWeekIndex == 0) ? 6 : dayOfWeekIndex - 1;
 
             string turkishDay = turkishDays[adjustedIndex];
-       
+
 
             if (isNull == 0)
             {
                 if (DateTime.Now.ToString("HH:mm") == textBox1.Text && textBox2.Text.Split(',').Contains(turkishDay))
                 {
-               
+
 
                     timer2.Enabled = true;
 
@@ -911,72 +895,72 @@ namespace Yedekleme
                     textBox2.Text = iniIcerik["ZamanAyarları"]["Gunler"];
 
 
-                  
-                        try
+
+                    try
+                    {
+                        _connection = new SqlConnection(connectionstring);
+
+                        _connection.Open();
+
+                        if (checkedListBox1.Items.Count != 0)
                         {
-                            _connection = new SqlConnection(connectionstring);
-
-                            _connection.Open();
-
-                            if (checkedListBox1.Items.Count != 0)
+                            foreach (object databasechecked in checkedListBox1.CheckedItems)
                             {
-                                foreach (object databasechecked in checkedListBox1.CheckedItems)
-                                {
-                                    string folder;
-                                    folder = textBoxLocation + @"\" + Convert.ToString(databasechecked) + ".bak";
+                                string folder;
+                                folder = textBoxLocation + @"\" + Convert.ToString(databasechecked) + ".bak";
 
 
-                                    sql = $@"BACKUP DATABASE {Convert.ToString(databasechecked)} TO DISK ='{textBoxLocation.Text.Trim()}\{Convert.ToString(databasechecked)} -{DateTime.Now.ToString("dddd, dd MMMM yyyy HH-mm-ss")}.bak'";
+                                sql = $@"BACKUP DATABASE {Convert.ToString(databasechecked)} TO DISK ='{textBoxLocation.Text.Trim()}\{Convert.ToString(databasechecked)} -{DateTime.Now.ToString("dddd, dd MMMM yyyy HH-mm-ss")}.bak'";
 
-                                    _command = new SqlCommand(sql, _connection);
-                                    _command.ExecuteNonQuery();
+                                _command = new SqlCommand(sql, _connection);
+                                _command.ExecuteNonQuery();
 
-
-                                }
-                                _connection.Close();
-                                _connection.Dispose();
-
-
-                                string files = textBoxLocation.Text;
-
-                                string[] array1 = Directory.GetFiles(files, "*.bak");
-                                foreach (string name in array1)
-                                {
-                                    string filename = System.IO.Path.GetFileName(name);
-                                    string sZipFile = $@"{files}\{filename}.zip";
-                                    using (FileStream _flStream = File.Open(sZipFile, FileMode.Create))
-                                    {
-                                        GZipStream obj = new GZipStream(_flStream, CompressionMode.Compress);
-                                        byte[] bt = File.ReadAllBytes(name);
-                                        obj.Write(bt, 0, bt.Length);
-                                        obj.Close();
-                                        obj.Dispose();
-
-                                    }
-                                }
-
-                                string srcDir = textBoxLocation.Text;
-                                string[] bakList = Directory.GetFiles(srcDir, "*.bak");
-
-                                if (Directory.Exists(srcDir))
-                                {
-                                    foreach (string f in bakList)
-                                    {
-                                        File.Delete(f);
-                                    }
-                                }
-
-                                          
-                                timer1.Stop();
-                                isNull = 1;
 
                             }
+                            _connection.Close();
+                            _connection.Dispose();
+
+
+                            string files = textBoxLocation.Text;
+
+                            string[] array1 = Directory.GetFiles(files, "*.bak");
+                            foreach (string name in array1)
+                            {
+                                string filename = System.IO.Path.GetFileName(name);
+                                string sZipFile = $@"{files}\{filename}.zip";
+                                using (FileStream _flStream = File.Open(sZipFile, FileMode.Create))
+                                {
+                                    GZipStream obj = new GZipStream(_flStream, CompressionMode.Compress);
+                                    byte[] bt = File.ReadAllBytes(name);
+                                    obj.Write(bt, 0, bt.Length);
+                                    obj.Close();
+                                    obj.Dispose();
+
+                                }
+                            }
+
+                            string srcDir = textBoxLocation.Text;
+                            string[] bakList = Directory.GetFiles(srcDir, "*.bak");
+
+                            if (Directory.Exists(srcDir))
+                            {
+                                foreach (string f in bakList)
+                                {
+                                    File.Delete(f);
+                                }
+                            }
+
+
+                            timer1.Stop();
+                            isNull = 1;
+
                         }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message, "Location", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Location", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
                 }
             }
 
@@ -991,7 +975,7 @@ namespace Yedekleme
                     Thread.Sleep(30000);
                     timer2.Interval = 45000;
                     timer2.Start();
-                  
+
                 }
                 else
                 {
@@ -1124,7 +1108,7 @@ namespace Yedekleme
                 if (timeSinceLastModified.TotalMinutes <= 5)
                 {
                     durum1 = true;
-                   
+
                     // Dosyanın adı alınıyor
                     string fileName = System.IO.Path.GetFileName(zipFile);
 
@@ -1137,16 +1121,16 @@ namespace Yedekleme
 
                     if (durum1 == true)
                     {
-                    // Dosya yükleme işlemi başlatılıyor
-                    using (var stream = new FileStream(zipFile, FileMode.Open))
-                    {
-                        var request = service.Files.Create(fileMetadata, stream, "application/zip");
-                        request.Fields = "id";
+                        // Dosya yükleme işlemi başlatılıyor
+                        using (var stream = new FileStream(zipFile, FileMode.Open))
+                        {
+                            var request = service.Files.Create(fileMetadata, stream, "application/zip");
+                            request.Fields = "id";
 
-                        // Dosya yükleme işlemi gerçekleştiriliyor
-                        await request.UploadAsync();
-                           
-                    }
+                            // Dosya yükleme işlemi gerçekleştiriliyor
+                            await request.UploadAsync();
+
+                        }
 
                     }
 
@@ -1154,7 +1138,7 @@ namespace Yedekleme
                 }
 
             }
-       
+
         }
 
         //Elle Drive'a Yedek Al
@@ -1250,7 +1234,7 @@ namespace Yedekleme
             textBox3.ForeColor = Color.Black;
             textBox3.Text = "Copyright © Glopark ";
             isNull = 0;
-            
+
             string mailTo = txtEmail.Text;
             string emailPattern = @"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$";
             Regex regex = new Regex(emailPattern);
@@ -1319,7 +1303,7 @@ namespace Yedekleme
             int adjustedIndex = (dayOfWeekIndex == 0) ? 6 : dayOfWeekIndex - 1;
 
             string turkishDay = turkishDays[adjustedIndex];
-          
+
             // Pazar gününü doğru şekilde ele almak için indeksi ayarlayın
 
             if (DateTime.Now.ToString("HH:mm") == textBox1.Text && textBox2.Text.Split(',').Contains(turkishDay))
@@ -1425,17 +1409,9 @@ namespace Yedekleme
             smtpClient.Send(mail);
         }
 
-        private void btnDeleteOldBackups_Click(object sender, EventArgs e)
+
+        private void DeleteOldBackups(string directoryPath)
         {
-
-
-         
-        }
-
-        private void DeleteOldBackups(string directoryPath, int days)
-        {
-            
-        
             try
             {
                 DirectoryInfo dirInfo = new DirectoryInfo(directoryPath);
@@ -1444,28 +1420,40 @@ namespace Yedekleme
                     MessageBox.Show("Yedek Dosyası Mevcut Değil.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                string[] extensions = new string[] { ".bak", ".rar", ".zip", ".7z" };
+                var filesDosya = dirInfo.GetFiles().Where(file => extensions.Contains(file.Extension.ToLower()))
+                                       .ToList();
 
-                DateTime thresholdDate = DateTime.Now.AddDays(-days);
+                DateTime bundanOncesi = DateTimePick.Value;
 
-                var filesToDelete = dirInfo.GetFiles()
-                                           .Where(file => file.CreationTime < thresholdDate)
-                                           .ToList();
-
-                foreach (var file in filesToDelete)
+                if (filesDosya.Count == 0)
                 {
-                    file.Delete();
+                    MessageBox.Show("Herhangi bir dosya bulunamadı.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-
-                MessageBox.Show($"{filesToDelete.Count} eski yedek dosyalar silindi.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                else
+                {
+                    foreach (var file in filesDosya)
+                    {
+                        if (file.CreationTime <= bundanOncesi)
+                        {
+                            file.Delete();
+                        }          
+                    }
+                }
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                MessageBox.Show("Klasöre erişim sağlanamadı.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (DirectoryNotFoundException ex)
+            {
+                MessageBox.Show("Böyle bir dizin yok.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            
+                MessageBox.Show($"Anlamlanmayan Hata Oluştu. {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
 
         /// <summary>
         /// Google Drivedaki klasörlere erişimi sağlar.
@@ -1529,7 +1517,7 @@ namespace Yedekleme
 
         private void btnDriveDisconnect_Click(object sender, EventArgs e)
         {
-            
+
             // Uygulamanın çalıştığı dizini al
             string appDirectory = AppDomain.CurrentDomain.BaseDirectory;
 
@@ -1542,8 +1530,8 @@ namespace Yedekleme
                 if (Directory.Exists(tokenFolderPath))
                 {
                     Directory.Delete(tokenFolderPath, true);
-                   
-                             
+
+
                     folderIdtxt.Text = "";
                     MessageBox.Show("Drive bağlantısı kesilmiştir.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     driveBaglanti = 0;
@@ -1561,15 +1549,17 @@ namespace Yedekleme
 
         private void folderIdKaydet_Click(object sender, EventArgs e)
         {
-            if(comboBox1.SelectedItem == null)
+            if (comboBox1.SelectedItem == null)
             {
                 MessageBox.Show("Lütfen Drive Klasörü Seçiniz.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else {
-                if (driveBaglanti == 1) { 
-            button2.PerformClick();
+            else
+            {
+                if (driveBaglanti == 1)
+                {
+                    button2.PerformClick();
 
-            MessageBox.Show("Kayıt başarıyla yapıldı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Kayıt başarıyla yapıldı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
@@ -1587,31 +1577,82 @@ namespace Yedekleme
         private void metroSetDefaultButton2_Click(object sender, EventArgs e)
         {
             OnLightThemeButtonClicked(sender, e);
-        }
+        }    
 
-        private void button3_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Bilgisayardaki belirtilen gün sayı önceki yedek dosyalarını siler.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button3_Click_1(object sender, EventArgs e)
         {
-        
-
 
             string dosyaYeri = textBoxLocation.Text;
 
             string backupDirectory = dosyaYeri; // Yedekleme dizininizin yolu
 
-            if (string.IsNullOrWhiteSpace(mskGunSil.Text) )
+
+            DialogResult result = MessageBox.Show($"{DateTimePick.Value} önceki tüm Yedek Dosyaları silinecektir. Emin misiniz?", "Uyarı", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+            if (result == DialogResult.OK)
+                DeleteOldBackups(backupDirectory);
+        }
+        /// <summary>
+        /// Drivedaki belli tarihten önceki dosyaları temizler.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            UserCredential credential;
+
+            using (var stream = new FileStream(PathToCredentials, FileMode.Open, FileAccess.Read))
             {
-                MessageBox.Show("Geçerli bir gün sayısı giriniz.", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string credPath = "token.json";
+                credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
+                    GoogleClientSecrets.Load(stream).Secrets,
+                    Scopes,
+                    "user",
+                    CancellationToken.None,
+                    new FileDataStore(credPath, true)).Result;
             }
 
-            int kacGun = Convert.ToInt32(mskGunSil.Text);
+            var service = new DriveService(new BaseClientService.Initializer()
+            {
+                HttpClientInitializer = credential,
+                ApplicationName = appname,
+            });
+
+            // Klasör ID'sini buraya girin
+            string folderId = folderIdtxt.Text;
+
+            FilesResource.ListRequest listRequest = service.Files.List();
+            listRequest.Q = $"'{folderId}' in parents";
+            listRequest.Fields = "nextPageToken, files(id, name, createdTime)";
+
+            IList<Google.Apis.Drive.v3.Data.File> files = listRequest.Execute().Files;
+
+            MessageBox.Show($"{DateTimePick.Value} tarihinden önceki tüm yedek dosyaları Drive'dan silinecektir", "Uyarı", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+            DateTime bundanOncesiDrive = DateTimePick.Value;
+
+            if (files != null && files.Count > 0)
+            {
 
 
+                foreach (var file in files)
+                {
 
-            DialogResult result = MessageBox.Show($"{kacGun} önceki tüm kayıtlar silinecektir. Emin misiniz?", "Uyarı", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-
-           if (result == DialogResult.OK)
-                DeleteOldBackups(backupDirectory, kacGun);
-            
+                    if (file.CreatedTime <= bundanOncesiDrive)
+                    {
+                        service.Files.Delete(file.Id).Execute();
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Dosya Bulanamadı.");
+            }
         }
     }
 }

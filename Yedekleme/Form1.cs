@@ -1592,7 +1592,7 @@ namespace Yedekleme
             string backupDirectory = dosyaYeri; // Yedekleme dizininizin yolu
 
 
-            DialogResult result = MessageBox.Show($"{DateTimePick.Value} önceki tüm Yedek Dosyaları silinecektir. Emin misiniz?", "Uyarı", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            DialogResult result = MessageBox.Show($"{DateTimePick.Value} önceki tüm Yedek Dosyaları Bilgisayardan silinecektir.Bu işlemin geri dönüşü yoktur. Emin misiniz?", "Uyarı", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 
             if (result == DialogResult.OK)
                 DeleteOldBackups(backupDirectory);
@@ -1632,7 +1632,7 @@ namespace Yedekleme
 
             IList<Google.Apis.Drive.v3.Data.File> files = listRequest.Execute().Files;
 
-            MessageBox.Show($"{DateTimePick.Value} tarihinden önceki tüm yedek dosyaları Drive'dan silinecektir", "Uyarı", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            MessageBox.Show($"{DateTimePick.Value} tarihinden önceki tüm yedek dosyaları Drive'dan silinecektir.Bu işlemin Geri Dönüşü Yoktur.", "Uyarı", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 
             DateTime bundanOncesiDrive = DateTimePick.Value;
 

@@ -85,6 +85,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.DateTimePick = new System.Windows.Forms.DateTimePicker();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxConnect)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDisconnect)).BeginInit();
@@ -101,6 +102,7 @@
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.panel2.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox3
@@ -636,7 +638,7 @@
             this.metroSetDefaultButton1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
             this.metroSetDefaultButton1.HoverTextColor = System.Drawing.Color.White;
             this.metroSetDefaultButton1.IsDerivedStyle = true;
-            this.metroSetDefaultButton1.Location = new System.Drawing.Point(422, 27);
+            this.metroSetDefaultButton1.Location = new System.Drawing.Point(32, 22);
             this.metroSetDefaultButton1.Name = "metroSetDefaultButton1";
             this.metroSetDefaultButton1.NormalBorderColor = System.Drawing.Color.Silver;
             this.metroSetDefaultButton1.NormalColor = System.Drawing.Color.Silver;
@@ -663,7 +665,7 @@
             this.metroSetDefaultButton2.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.metroSetDefaultButton2.HoverTextColor = System.Drawing.Color.White;
             this.metroSetDefaultButton2.IsDerivedStyle = true;
-            this.metroSetDefaultButton2.Location = new System.Drawing.Point(591, 29);
+            this.metroSetDefaultButton2.Location = new System.Drawing.Point(144, 20);
             this.metroSetDefaultButton2.Name = "metroSetDefaultButton2";
             this.metroSetDefaultButton2.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.metroSetDefaultButton2.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
@@ -747,17 +749,27 @@
             this.DateTimePick.TabIndex = 0;
             this.DateTimePick.Value = new System.DateTime(2024, 1, 1, 0, 0, 0, 0);
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.metroSetDefaultButton1);
+            this.groupBox5.Controls.Add(this.metroSetDefaultButton2);
+            this.groupBox5.Location = new System.Drawing.Point(409, 7);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(260, 55);
+            this.groupBox5.TabIndex = 29;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Tema Seçimi";
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(723, 640);
             this.ControlBox = false;
+            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.standaloneBarDockControl1);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.metroSetDefaultButton2);
-            this.Controls.Add(this.metroSetDefaultButton1);
             this.Controls.Add(this.metroSetControlBox2);
             this.Controls.Add(this.metroSetControlBox1);
             this.Controls.Add(this.panel1);
@@ -801,6 +813,7 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
             this.panel2.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -861,6 +874,7 @@
         private System.Windows.Forms.DateTimePicker DateTimePick;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.GroupBox groupBox5;
     }
 }
 

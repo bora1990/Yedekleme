@@ -119,6 +119,17 @@ namespace Yedekleme
         {
             ApplyTheme(Themes.Theme.DarkBackColor, Themes.Theme.DarkForeColor);
         }
+
+        private void OnColourThemeButtonClicked(object sender, EventArgs e)
+        {
+            ApplyTheme(Themes.Theme.ColourBackColor, Themes.Theme.ColourForeColor);
+        }
+
+        private void OnWhiteThemeButtonClicked(object sender, EventArgs e)
+        {
+            ApplyTheme(Themes.Theme.WhiteBackColor, Themes.Theme.WhiteForeColor);
+        }
+
         private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             pictureBox3.Hide();
@@ -190,7 +201,7 @@ namespace Yedekleme
             folderIdtxt.Visible = false;
 
 
-            Thread.Sleep(1000);
+            
             //cmbServerName.Text = System.Net.Dns.GetHostName().ToUpper() + @"\SQLEXPRESS";
             //comboboxDatabase.SelectedIndex = 0;
 
@@ -859,7 +870,6 @@ namespace Yedekleme
                     string currentSection = "";
 
 
-                    Thread.Sleep(2000);
                     // INI dosyasını satır satır oku
                     using (StreamReader dosya = new StreamReader(dosyaYolu))
                     {
@@ -935,7 +945,6 @@ namespace Yedekleme
                                     obj.Write(bt, 0, bt.Length);
                                     obj.Close();
                                     obj.Dispose();
-
                                 }
                             }
 
@@ -972,7 +981,7 @@ namespace Yedekleme
                     textBox3.ForeColor = Color.Black;
 
                     textBox3.Text = "Dosyalar Google Drive'a Gönderiliyor...";
-                    Thread.Sleep(30000);
+                    Thread.Sleep(45000);
                     timer2.Interval = 45000;
                     timer2.Start();
 
@@ -1228,7 +1237,7 @@ namespace Yedekleme
 
             string folderId = folderIdtxt.Text;
             UploadFilesToDrive(folderId);
-            Thread.Sleep(18000);
+            Thread.Sleep(15000);
             textBox3.Text = "";
             textBox3.BackColor = Color.White;
             textBox3.ForeColor = Color.Black;
@@ -1653,6 +1662,21 @@ namespace Yedekleme
             {
                 MessageBox.Show("Dosya Bulanamadı.");
             }
+        }
+
+        private void metroSetDefaultButton3_Click(object sender, EventArgs e)
+        {
+            OnColourThemeButtonClicked(sender, e);
+        }
+
+        private void metroSetDefaultButton4_Click(object sender, EventArgs e)
+        {
+            OnWhiteThemeButtonClicked(sender, e);
+        }
+
+        private void timer3_Tick(object sender, EventArgs e)
+        {
+            labelTime.Text = DateTime.Now.ToString("dd MMMM yyyy HH:mm:ss");
         }
     }
 }

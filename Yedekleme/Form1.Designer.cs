@@ -81,11 +81,16 @@
             this.metroSetDefaultButton2 = new MetroSet_UI.Controls.MetroSetDefaultButton();
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
             this.standaloneBarDockControl1 = new DevExpress.XtraBars.StandaloneBarDockControl();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.DateTimePick = new System.Windows.Forms.DateTimePicker();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.metroSetDefaultButton4 = new MetroSet_UI.Controls.MetroSetDefaultButton();
+            this.metroSetDefaultButton3 = new MetroSet_UI.Controls.MetroSetDefaultButton();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.timer3 = new System.Windows.Forms.Timer(this.components);
+            this.labelTime = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxConnect)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDisconnect)).BeginInit();
@@ -101,8 +106,9 @@
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
-            this.panel2.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox3
@@ -231,9 +237,9 @@
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(9, 534);
+            this.button1.Location = new System.Drawing.Point(12, 540);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(220, 102);
+            this.button1.Size = new System.Drawing.Size(276, 44);
             this.button1.TabIndex = 10;
             this.button1.Text = "Hemen Yedekle";
             this.button1.UseVisualStyleBackColor = false;
@@ -387,7 +393,7 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Location = new System.Drawing.Point(234, 92);
+            this.txtEmail.Location = new System.Drawing.Point(167, 105);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(240, 24);
             this.txtEmail.TabIndex = 7;
@@ -395,11 +401,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(17, 95);
+            this.label1.Location = new System.Drawing.Point(35, 105);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(216, 20);
+            this.label1.Size = new System.Drawing.Size(126, 20);
             this.label1.TabIndex = 12;
-            this.label1.Text = "Mail Adresini Giriniz :";
+            this.label1.Text = "Mail Adresi :";
             // 
             // folderIdtxt
             // 
@@ -473,7 +479,7 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.White;
             this.label7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label7.Location = new System.Drawing.Point(215, 168);
+            this.label7.Location = new System.Drawing.Point(196, 168);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(135, 20);
             this.label7.TabIndex = 14;
@@ -491,7 +497,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(89, 65);
+            this.label10.Location = new System.Drawing.Point(17, 70);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(144, 20);
             this.label10.TabIndex = 12;
@@ -514,11 +520,11 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(170, 35);
+            this.label9.Location = new System.Drawing.Point(35, 35);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(63, 20);
+            this.label9.Size = new System.Drawing.Size(126, 20);
             this.label9.TabIndex = 11;
-            this.label9.Text = "Saat :";
+            this.label9.Text = "Kurulu Saat :";
             // 
             // textBox3
             // 
@@ -534,7 +540,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(234, 62);
+            this.textBox2.Location = new System.Drawing.Point(167, 70);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(240, 24);
             this.textBox2.TabIndex = 11;
@@ -544,15 +550,15 @@
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.White;
             this.label8.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label8.Location = new System.Drawing.Point(43, 168);
+            this.label8.Location = new System.Drawing.Point(17, 168);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(90, 20);
+            this.label8.Size = new System.Drawing.Size(81, 20);
             this.label8.TabIndex = 3;
-            this.label8.Text = "Ayarlar :";
+            this.label8.Text = "Planla :";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(234, 32);
+            this.textBox1.Location = new System.Drawing.Point(167, 35);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(82, 24);
             this.textBox1.TabIndex = 12;
@@ -561,7 +567,7 @@
             // 
             this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox2.Image = global::Yedekleme.Properties.Resources.output_onlinepngtools;
-            this.pictureBox2.Location = new System.Drawing.Point(139, 147);
+            this.pictureBox2.Location = new System.Drawing.Point(118, 147);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(50, 50);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -581,7 +587,7 @@
             this.panel1.Controls.Add(this.textBoxLocation);
             this.panel1.Location = new System.Drawing.Point(9, 220);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(394, 69);
+            this.panel1.Size = new System.Drawing.Size(397, 69);
             this.panel1.TabIndex = 16;
             // 
             // metroSetControlBox2
@@ -630,27 +636,27 @@
             // 
             // metroSetDefaultButton1
             // 
-            this.metroSetDefaultButton1.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.metroSetDefaultButton1.DisabledBorderColor = System.Drawing.Color.Silver;
-            this.metroSetDefaultButton1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.metroSetDefaultButton1.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.metroSetDefaultButton1.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
+            this.metroSetDefaultButton1.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
             this.metroSetDefaultButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.metroSetDefaultButton1.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
-            this.metroSetDefaultButton1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.metroSetDefaultButton1.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.metroSetDefaultButton1.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.metroSetDefaultButton1.HoverTextColor = System.Drawing.Color.White;
             this.metroSetDefaultButton1.IsDerivedStyle = true;
-            this.metroSetDefaultButton1.Location = new System.Drawing.Point(32, 22);
+            this.metroSetDefaultButton1.Location = new System.Drawing.Point(9, 33);
             this.metroSetDefaultButton1.Name = "metroSetDefaultButton1";
-            this.metroSetDefaultButton1.NormalBorderColor = System.Drawing.Color.Silver;
-            this.metroSetDefaultButton1.NormalColor = System.Drawing.Color.Silver;
+            this.metroSetDefaultButton1.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.metroSetDefaultButton1.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
             this.metroSetDefaultButton1.NormalTextColor = System.Drawing.Color.Black;
-            this.metroSetDefaultButton1.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.metroSetDefaultButton1.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.metroSetDefaultButton1.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.metroSetDefaultButton1.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.metroSetDefaultButton1.PressTextColor = System.Drawing.Color.White;
-            this.metroSetDefaultButton1.Size = new System.Drawing.Size(74, 27);
+            this.metroSetDefaultButton1.Size = new System.Drawing.Size(57, 21);
             this.metroSetDefaultButton1.Style = MetroSet_UI.Enums.Style.Custom;
             this.metroSetDefaultButton1.StyleManager = null;
             this.metroSetDefaultButton1.TabIndex = 19;
-            this.metroSetDefaultButton1.Text = "Gri";
+            this.metroSetDefaultButton1.Text = "Grey";
             this.metroSetDefaultButton1.ThemeAuthor = "Narwin";
             this.metroSetDefaultButton1.ThemeName = "MetroDark";
             this.metroSetDefaultButton1.Click += new System.EventHandler(this.metroSetDefaultButton1_Click);
@@ -665,7 +671,7 @@
             this.metroSetDefaultButton2.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.metroSetDefaultButton2.HoverTextColor = System.Drawing.Color.White;
             this.metroSetDefaultButton2.IsDerivedStyle = true;
-            this.metroSetDefaultButton2.Location = new System.Drawing.Point(144, 20);
+            this.metroSetDefaultButton2.Location = new System.Drawing.Point(140, 33);
             this.metroSetDefaultButton2.Name = "metroSetDefaultButton2";
             this.metroSetDefaultButton2.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.metroSetDefaultButton2.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
@@ -673,11 +679,11 @@
             this.metroSetDefaultButton2.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.metroSetDefaultButton2.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.metroSetDefaultButton2.PressTextColor = System.Drawing.Color.White;
-            this.metroSetDefaultButton2.Size = new System.Drawing.Size(80, 27);
+            this.metroSetDefaultButton2.Size = new System.Drawing.Size(57, 21);
             this.metroSetDefaultButton2.Style = MetroSet_UI.Enums.Style.Light;
             this.metroSetDefaultButton2.StyleManager = null;
             this.metroSetDefaultButton2.TabIndex = 20;
-            this.metroSetDefaultButton2.Text = "Açık";
+            this.metroSetDefaultButton2.Text = "Cyan";
             this.metroSetDefaultButton2.ThemeAuthor = "Narwin";
             this.metroSetDefaultButton2.ThemeName = "MetroLite";
             this.metroSetDefaultButton2.Click += new System.EventHandler(this.metroSetDefaultButton2_Click);
@@ -708,66 +714,155 @@
             this.standaloneBarDockControl1.Size = new System.Drawing.Size(8, 8);
             this.standaloneBarDockControl1.Text = "standaloneBarDockControl1";
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.button4);
-            this.panel2.Controls.Add(this.button3);
-            this.panel2.Controls.Add(this.DateTimePick);
-            this.panel2.Location = new System.Drawing.Point(235, 537);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(483, 102);
-            this.panel2.TabIndex = 26;
-            // 
             // button4
             // 
+            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button4.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button4.Location = new System.Drawing.Point(9, 70);
+            this.button4.Location = new System.Drawing.Point(128, 51);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(456, 29);
+            this.button4.Size = new System.Drawing.Size(287, 29);
             this.button4.TabIndex = 2;
-            this.button4.Text = "Tarihinden Önceki Verileri Drive Klasöründen SİL";
+            this.button4.Text = "Tarihinden önceki verileri DRIVE\'dan SİL";
+            this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click_1);
             // 
             // button3
             // 
+            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.Font = new System.Drawing.Font("Corbel", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button3.Location = new System.Drawing.Point(9, 36);
+            this.button3.Location = new System.Drawing.Point(128, 85);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(461, 28);
+            this.button3.Size = new System.Drawing.Size(287, 28);
             this.button3.TabIndex = 1;
-            this.button3.Text = "Tarihinden Önceki Verileri Bilgisayarımdan SİL";
+            this.button3.Text = "Tarihinden önceki verileri PC\'den  SİL";
+            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // DateTimePick
             // 
             this.DateTimePick.CalendarFont = new System.Drawing.Font("Corbel", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.DateTimePick.Location = new System.Drawing.Point(120, 3);
+            this.DateTimePick.Location = new System.Drawing.Point(128, 23);
             this.DateTimePick.Name = "DateTimePick";
-            this.DateTimePick.Size = new System.Drawing.Size(224, 24);
+            this.DateTimePick.Size = new System.Drawing.Size(287, 24);
             this.DateTimePick.TabIndex = 0;
             this.DateTimePick.Value = new System.DateTime(2024, 1, 1, 0, 0, 0, 0);
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.metroSetDefaultButton4);
+            this.groupBox5.Controls.Add(this.metroSetDefaultButton3);
             this.groupBox5.Controls.Add(this.metroSetDefaultButton1);
             this.groupBox5.Controls.Add(this.metroSetDefaultButton2);
-            this.groupBox5.Location = new System.Drawing.Point(409, 7);
+            this.groupBox5.Location = new System.Drawing.Point(9, 585);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(260, 55);
+            this.groupBox5.Size = new System.Drawing.Size(279, 70);
             this.groupBox5.TabIndex = 29;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Tema Seçimi";
+            // 
+            // metroSetDefaultButton4
+            // 
+            this.metroSetDefaultButton4.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.metroSetDefaultButton4.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
+            this.metroSetDefaultButton4.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            this.metroSetDefaultButton4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.metroSetDefaultButton4.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.metroSetDefaultButton4.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.metroSetDefaultButton4.HoverTextColor = System.Drawing.Color.White;
+            this.metroSetDefaultButton4.IsDerivedStyle = true;
+            this.metroSetDefaultButton4.Location = new System.Drawing.Point(76, 33);
+            this.metroSetDefaultButton4.Name = "metroSetDefaultButton4";
+            this.metroSetDefaultButton4.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.metroSetDefaultButton4.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.metroSetDefaultButton4.NormalTextColor = System.Drawing.Color.Black;
+            this.metroSetDefaultButton4.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.metroSetDefaultButton4.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.metroSetDefaultButton4.PressTextColor = System.Drawing.Color.White;
+            this.metroSetDefaultButton4.Size = new System.Drawing.Size(57, 21);
+            this.metroSetDefaultButton4.Style = MetroSet_UI.Enums.Style.Light;
+            this.metroSetDefaultButton4.StyleManager = null;
+            this.metroSetDefaultButton4.TabIndex = 3;
+            this.metroSetDefaultButton4.Text = "White";
+            this.metroSetDefaultButton4.ThemeAuthor = "Narwin";
+            this.metroSetDefaultButton4.ThemeName = "MetroLite";
+            this.metroSetDefaultButton4.Click += new System.EventHandler(this.metroSetDefaultButton4_Click);
+            // 
+            // metroSetDefaultButton3
+            // 
+            this.metroSetDefaultButton3.DisabledBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.metroSetDefaultButton3.DisabledBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(155)))), ((int)(((byte)(155)))));
+            this.metroSetDefaultButton3.DisabledForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            this.metroSetDefaultButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.metroSetDefaultButton3.HoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.metroSetDefaultButton3.HoverColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.metroSetDefaultButton3.HoverTextColor = System.Drawing.Color.White;
+            this.metroSetDefaultButton3.IsDerivedStyle = true;
+            this.metroSetDefaultButton3.Location = new System.Drawing.Point(203, 33);
+            this.metroSetDefaultButton3.Name = "metroSetDefaultButton3";
+            this.metroSetDefaultButton3.NormalBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.metroSetDefaultButton3.NormalColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(238)))), ((int)(((byte)(238)))));
+            this.metroSetDefaultButton3.NormalTextColor = System.Drawing.Color.Black;
+            this.metroSetDefaultButton3.PressBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.metroSetDefaultButton3.PressColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.metroSetDefaultButton3.PressTextColor = System.Drawing.Color.White;
+            this.metroSetDefaultButton3.Size = new System.Drawing.Size(57, 21);
+            this.metroSetDefaultButton3.Style = MetroSet_UI.Enums.Style.Light;
+            this.metroSetDefaultButton3.StyleManager = null;
+            this.metroSetDefaultButton3.TabIndex = 3;
+            this.metroSetDefaultButton3.Text = "Orange";
+            this.metroSetDefaultButton3.ThemeAuthor = "Narwin";
+            this.metroSetDefaultButton3.ThemeName = "MetroLite";
+            this.metroSetDefaultButton3.Click += new System.EventHandler(this.metroSetDefaultButton3_Click);
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.pictureBox6);
+            this.groupBox6.Controls.Add(this.DateTimePick);
+            this.groupBox6.Controls.Add(this.button3);
+            this.groupBox6.Controls.Add(this.button4);
+            this.groupBox6.Location = new System.Drawing.Point(294, 537);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(421, 118);
+            this.groupBox6.TabIndex = 31;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Klasörlerde Yer Açma";
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Enabled = false;
+            this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
+            this.pictureBox6.Location = new System.Drawing.Point(22, 23);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(87, 88);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox6.TabIndex = 3;
+            this.pictureBox6.TabStop = false;
+            // 
+            // timer3
+            // 
+            this.timer3.Enabled = true;
+            this.timer3.Interval = 1000;
+            this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
+            // 
+            // labelTime
+            // 
+            this.labelTime.AutoSize = true;
+            this.labelTime.Location = new System.Drawing.Point(447, 34);
+            this.labelTime.Name = "labelTime";
+            this.labelTime.Size = new System.Drawing.Size(0, 20);
+            this.labelTime.TabIndex = 32;
             // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(723, 640);
+            this.ClientSize = new System.Drawing.Size(723, 659);
             this.ControlBox = false;
+            this.Controls.Add(this.labelTime);
+            this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.standaloneBarDockControl1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.metroSetControlBox2);
@@ -812,9 +907,11 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).EndInit();
-            this.panel2.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -870,11 +967,16 @@
         private System.Windows.Forms.Label label7;
         private DevExpress.XtraBars.Docking.DockManager dockManager1;
         private DevExpress.XtraBars.StandaloneBarDockControl standaloneBarDockControl1;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DateTimePicker DateTimePick;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.GroupBox groupBox5;
+        private MetroSet_UI.Controls.MetroSetDefaultButton metroSetDefaultButton3;
+        private MetroSet_UI.Controls.MetroSetDefaultButton metroSetDefaultButton4;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.Timer timer3;
+        private System.Windows.Forms.Label labelTime;
     }
 }
 

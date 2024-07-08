@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.cmbServerName = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -42,6 +41,7 @@
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnDriveDisconnect = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.folderIdKaydet = new System.Windows.Forms.Button();
@@ -51,17 +51,18 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.btnYedeklemeDisconnect = new DevExpress.XtraEditors.SimpleButton();
-            this.btnGorevBasla = new DevExpress.XtraEditors.SimpleButton();
+            this.btnPlan = new DevExpress.XtraEditors.SimpleButton();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.label10 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.folderIdtxt = new System.Windows.Forms.TextBox();
+            this.btnYedeklemeDisconnect = new DevExpress.XtraEditors.SimpleButton();
+            this.btnGorevBasla = new DevExpress.XtraEditors.SimpleButton();
             this.metroSetControlBox1 = new MetroSet_UI.Controls.MetroSetControlBox();
             this.textBoxLocation = new System.Windows.Forms.TextBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
@@ -77,13 +78,12 @@
             this.button3 = new System.Windows.Forms.Button();
             this.DateTimePick = new System.Windows.Forms.DateTimePicker();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.btnPlan = new DevExpress.XtraEditors.SimpleButton();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.marqueeProgressBarControl1 = new DevExpress.XtraEditors.MarqueeProgressBarControl();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -92,28 +92,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.dockManager1)).BeginInit();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.marqueeProgressBarControl1.Properties)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Cursor = System.Windows.Forms.Cursors.WaitCursor;
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(177, 21);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(113, 25);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 11;
-            this.pictureBox3.TabStop = false;
             // 
             // txtPassword
             // 
             this.txtPassword.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.txtPassword.Location = new System.Drawing.Point(105, 107);
+            this.txtPassword.Location = new System.Drawing.Point(105, 105);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(260, 27);
+            this.txtPassword.Size = new System.Drawing.Size(260, 23);
             this.txtPassword.TabIndex = 2;
             // 
             // cmbServerName
@@ -124,7 +113,7 @@
             this.cmbServerName.Location = new System.Drawing.Point(105, 49);
             this.cmbServerName.Margin = new System.Windows.Forms.Padding(0);
             this.cmbServerName.Name = "cmbServerName";
-            this.cmbServerName.Size = new System.Drawing.Size(260, 28);
+            this.cmbServerName.Size = new System.Drawing.Size(260, 25);
             this.cmbServerName.TabIndex = 0;
             this.cmbServerName.SelectedIndexChanged += new System.EventHandler(this.cmbServerName_SelectedIndexChanged);
             // 
@@ -134,7 +123,7 @@
             this.label6.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label6.Location = new System.Drawing.Point(55, 107);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(46, 20);
+            this.label6.Size = new System.Drawing.Size(37, 17);
             this.label6.TabIndex = 8;
             this.label6.Text = "Şifre:";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -145,7 +134,7 @@
             this.label5.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label5.Location = new System.Drawing.Point(28, 78);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(73, 20);
+            this.label5.Size = new System.Drawing.Size(58, 17);
             this.label5.TabIndex = 6;
             this.label5.Text = "Kullanıcı:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -155,7 +144,7 @@
             this.textboxUser.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.textboxUser.Location = new System.Drawing.Point(105, 78);
             this.textboxUser.Name = "textboxUser";
-            this.textboxUser.Size = new System.Drawing.Size(260, 27);
+            this.textboxUser.Size = new System.Drawing.Size(260, 23);
             this.textboxUser.TabIndex = 1;
             // 
             // label2
@@ -164,7 +153,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label2.Location = new System.Drawing.Point(6, 52);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(95, 20);
+            this.label2.Size = new System.Drawing.Size(75, 17);
             this.label2.TabIndex = 1;
             this.label2.Text = "Sunucu Adı:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -185,7 +174,7 @@
             this.checkBoxTumu.AutoSize = true;
             this.checkBoxTumu.Location = new System.Drawing.Point(6, 28);
             this.checkBoxTumu.Name = "checkBoxTumu";
-            this.checkBoxTumu.Size = new System.Drawing.Size(120, 24);
+            this.checkBoxTumu.Size = new System.Drawing.Size(97, 21);
             this.checkBoxTumu.TabIndex = 3;
             this.checkBoxTumu.Text = "Tümünü Seç";
             this.checkBoxTumu.UseVisualStyleBackColor = true;
@@ -198,7 +187,7 @@
             this.checkedListBox1.Location = new System.Drawing.Point(6, 58);
             this.checkedListBox1.Name = "checkedListBox1";
             this.checkedListBox1.ScrollAlwaysVisible = true;
-            this.checkedListBox1.Size = new System.Drawing.Size(358, 158);
+            this.checkedListBox1.Size = new System.Drawing.Size(358, 148);
             this.checkedListBox1.TabIndex = 4;
             // 
             // button1
@@ -234,6 +223,17 @@
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Google Drive Yedekleme Dizini";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(314, 93);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(28, 28);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 17;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click_1);
             // 
             // btnDriveDisconnect
             // 
@@ -303,7 +303,7 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(10, 93);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(298, 28);
+            this.comboBox1.Size = new System.Drawing.Size(298, 25);
             this.comboBox1.TabIndex = 14;
             this.comboBox1.Text = "Seçiniz";
             // 
@@ -312,7 +312,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(9, 62);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(193, 20);
+            this.label4.Size = new System.Drawing.Size(156, 17);
             this.label4.TabIndex = 15;
             this.label4.Text = "Drive Klasörünüzü Seçiniz";
             // 
@@ -344,7 +344,6 @@
             this.groupBox4.Controls.Add(this.btnPlan);
             this.groupBox4.Controls.Add(this.metroLabel1);
             this.groupBox4.Controls.Add(this.label10);
-            this.groupBox4.Controls.Add(this.textBox3);
             this.groupBox4.Controls.Add(this.txtEmail);
             this.groupBox4.Controls.Add(this.label9);
             this.groupBox4.Controls.Add(this.label1);
@@ -352,16 +351,104 @@
             this.groupBox4.Controls.Add(this.textBox1);
             this.groupBox4.Controls.Add(this.folderIdtxt);
             this.groupBox4.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.groupBox4.Location = new System.Drawing.Point(383, 186);
+            this.groupBox4.Location = new System.Drawing.Point(383, 188);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(486, 165);
+            this.groupBox4.Size = new System.Drawing.Size(486, 132);
             this.groupBox4.TabIndex = 7;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Planlama";
             // 
+            // btnPlan
+            // 
+            this.btnPlan.Appearance.Font = new System.Drawing.Font("Microsoft YaHei", 9F);
+            this.btnPlan.Appearance.Options.UseFont = true;
+            this.btnPlan.Location = new System.Drawing.Point(220, 37);
+            this.btnPlan.Name = "btnPlan";
+            this.btnPlan.Size = new System.Drawing.Size(262, 24);
+            this.btnPlan.TabIndex = 17;
+            this.btnPlan.Text = "Gün ve Saat Ayarla";
+            this.btnPlan.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
+            // metroLabel1
+            // 
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.Location = new System.Drawing.Point(447, -270);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(81, 19);
+            this.metroLabel1.TabIndex = 13;
+            this.metroLabel1.Text = "metroLabel1";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(8, 70);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(94, 17);
+            this.label10.TabIndex = 12;
+            this.label10.Text = "Kurulu Gunler :";
+            // 
+            // textBox3
+            // 
+            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox3.Cursor = System.Windows.Forms.Cursors.Default;
+            this.textBox3.Font = new System.Drawing.Font("Microsoft YaHei", 9F);
+            this.textBox3.Location = new System.Drawing.Point(385, 403);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
+            this.textBox3.Size = new System.Drawing.Size(483, 23);
+            this.textBox3.TabIndex = 13;
+            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Location = new System.Drawing.Point(132, 94);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(350, 23);
+            this.txtEmail.TabIndex = 7;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(20, 38);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(81, 17);
+            this.label9.TabIndex = 11;
+            this.label9.Text = "Kurulu Saat :";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(22, 100);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(81, 17);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Mail Adresi :";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(132, 65);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(350, 23);
+            this.textBox2.TabIndex = 11;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(132, 37);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(82, 23);
+            this.textBox1.TabIndex = 12;
+            // 
+            // folderIdtxt
+            // 
+            this.folderIdtxt.Location = new System.Drawing.Point(146, -5);
+            this.folderIdtxt.Name = "folderIdtxt";
+            this.folderIdtxt.Size = new System.Drawing.Size(237, 23);
+            this.folderIdtxt.TabIndex = 6;
+            // 
             // btnYedeklemeDisconnect
             // 
             this.btnYedeklemeDisconnect.Appearance.Font = new System.Drawing.Font("Microsoft YaHei", 9F);
+            this.btnYedeklemeDisconnect.Appearance.Options.UseFont = true;
             this.btnYedeklemeDisconnect.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnYedeklemeDisconnect.Location = new System.Drawing.Point(-3, 432);
             this.btnYedeklemeDisconnect.Name = "btnYedeklemeDisconnect";
@@ -380,82 +467,6 @@
             this.btnGorevBasla.TabIndex = 15;
             this.btnGorevBasla.Text = "Yedeklemeyi Başlat";
             this.btnGorevBasla.Click += new System.EventHandler(this.btnGorevBasla_Click);
-            // 
-            // metroLabel1
-            // 
-            this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(447, -270);
-            this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(84, 20);
-            this.metroLabel1.TabIndex = 13;
-            this.metroLabel1.Text = "metroLabel1";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(3, 70);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(116, 20);
-            this.label10.TabIndex = 12;
-            this.label10.Text = "Kurulu Gunler :";
-            // 
-            // txtEmail
-            // 
-            this.txtEmail.Location = new System.Drawing.Point(132, 95);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(350, 27);
-            this.txtEmail.TabIndex = 7;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(20, 38);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(99, 20);
-            this.label9.TabIndex = 11;
-            this.label9.Text = "Kurulu Saat :";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(22, 105);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(99, 20);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "Mail Adresi :";
-            // 
-            // textBox3
-            // 
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox3.Cursor = System.Windows.Forms.Cursors.Default;
-            this.textBox3.Font = new System.Drawing.Font("Microsoft YaHei", 9F);
-            this.textBox3.Location = new System.Drawing.Point(1, 130);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(483, 27);
-            this.textBox3.TabIndex = 13;
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(132, 64);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(350, 27);
-            this.textBox2.TabIndex = 11;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(132, 35);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(82, 27);
-            this.textBox1.TabIndex = 12;
-            // 
-            // folderIdtxt
-            // 
-            this.folderIdtxt.Location = new System.Drawing.Point(146, -5);
-            this.folderIdtxt.Name = "folderIdtxt";
-            this.folderIdtxt.Size = new System.Drawing.Size(237, 27);
-            this.folderIdtxt.TabIndex = 6;
             // 
             // metroSetControlBox1
             // 
@@ -488,7 +499,7 @@
             // 
             this.textBoxLocation.Location = new System.Drawing.Point(2, 26);
             this.textBoxLocation.Name = "textBoxLocation";
-            this.textBoxLocation.Size = new System.Drawing.Size(446, 27);
+            this.textBoxLocation.Size = new System.Drawing.Size(446, 23);
             this.textBoxLocation.TabIndex = 9;
             // 
             // openFileDialog1
@@ -534,9 +545,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.marqueeProgressBarControl1);
             this.groupBox1.Controls.Add(this.btnBaglantiKes);
             this.groupBox1.Controls.Add(this.btnBaglan);
-            this.groupBox1.Controls.Add(this.pictureBox3);
             this.groupBox1.Controls.Add(this.txtPassword);
             this.groupBox1.Controls.Add(this.cmbServerName);
             this.groupBox1.Controls.Add(this.label6);
@@ -553,8 +564,9 @@
             // btnBaglantiKes
             // 
             this.btnBaglantiKes.Appearance.Font = new System.Drawing.Font("Microsoft YaHei", 9F);
+            this.btnBaglantiKes.Appearance.Options.UseFont = true;
             this.btnBaglantiKes.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBaglantiKes.Location = new System.Drawing.Point(105, 140);
+            this.btnBaglantiKes.Location = new System.Drawing.Point(105, 137);
             this.btnBaglantiKes.Name = "btnBaglantiKes";
             this.btnBaglantiKes.Size = new System.Drawing.Size(260, 33);
             this.btnBaglantiKes.TabIndex = 34;
@@ -566,7 +578,7 @@
             this.btnBaglan.Appearance.Font = new System.Drawing.Font("Microsoft YaHei", 9F);
             this.btnBaglan.Appearance.Options.UseFont = true;
             this.btnBaglan.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBaglan.Location = new System.Drawing.Point(105, 140);
+            this.btnBaglan.Location = new System.Drawing.Point(105, 137);
             this.btnBaglan.Name = "btnBaglan";
             this.btnBaglan.Size = new System.Drawing.Size(260, 27);
             this.btnBaglan.TabIndex = 12;
@@ -622,7 +634,7 @@
             this.DateTimePick.CalendarFont = new System.Drawing.Font("Microsoft YaHei", 9F);
             this.DateTimePick.Location = new System.Drawing.Point(6, 30);
             this.DateTimePick.Name = "DateTimePick";
-            this.DateTimePick.Size = new System.Drawing.Size(287, 27);
+            this.DateTimePick.Size = new System.Drawing.Size(287, 23);
             this.DateTimePick.TabIndex = 0;
             this.DateTimePick.Value = new System.DateTime(2024, 1, 1, 0, 0, 0, 0);
             // 
@@ -631,23 +643,12 @@
             this.groupBox6.Controls.Add(this.DateTimePick);
             this.groupBox6.Controls.Add(this.button3);
             this.groupBox6.Controls.Add(this.button4);
-            this.groupBox6.Location = new System.Drawing.Point(382, 354);
+            this.groupBox6.Location = new System.Drawing.Point(383, 323);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(487, 75);
             this.groupBox6.TabIndex = 31;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Belirtilen Tarihten Önceki Verileri Sil";
-            // 
-            // btnPlan
-            // 
-            this.btnPlan.Appearance.Font = new System.Drawing.Font("Microsoft YaHei", 9F);
-            this.btnPlan.Appearance.Options.UseFont = true;
-            this.btnPlan.Location = new System.Drawing.Point(282, 30);
-            this.btnPlan.Name = "btnPlan";
-            this.btnPlan.Size = new System.Drawing.Size(200, 31);
-            this.btnPlan.TabIndex = 17;
-            this.btnPlan.Text = "Gün ve Saat Ayarla";
-            this.btnPlan.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // groupBox5
             // 
@@ -660,17 +661,6 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Yerel Yedekleme Dizini";
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(314, 93);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(28, 28);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 17;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click_1);
-            // 
             // pictureBox6
             // 
             this.pictureBox6.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox6.Image")));
@@ -682,6 +672,14 @@
             this.pictureBox6.TabStop = false;
             this.pictureBox6.Click += new System.EventHandler(this.pictureBox6_Click);
             // 
+            // marqueeProgressBarControl1
+            // 
+            this.marqueeProgressBarControl1.Location = new System.Drawing.Point(105, 25);
+            this.marqueeProgressBarControl1.Name = "marqueeProgressBarControl1";
+            this.marqueeProgressBarControl1.Properties.MarqueeAnimationSpeed = 50;
+            this.marqueeProgressBarControl1.Size = new System.Drawing.Size(260, 18);
+            this.marqueeProgressBarControl1.TabIndex = 35;
+            // 
             // Form1
             // 
             this.AllowDrop = true;
@@ -691,6 +689,7 @@
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.btnYedeklemeDisconnect);
             this.Controls.Add(this.btnGorevBasla);
+            this.Controls.Add(this.textBox3);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.metroSetControlBox2);
@@ -701,7 +700,7 @@
             this.Controls.Add(this.groupBox3);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.ImeMode = System.Windows.Forms.ImeMode.On;
             this.KeyPreview = true;
@@ -710,13 +709,13 @@
             this.MinimizeBox = false;
             this.Name = "Form1";
             this.Sizable = false;
-            this.Text = "BYK Backup Software";
+            this.Text = "SQL Backup First";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
@@ -728,9 +727,10 @@
             this.groupBox6.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.marqueeProgressBarControl1.Properties)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -764,7 +764,6 @@
 		private System.Windows.Forms.Timer timer2;
 		private System.Windows.Forms.Button folderIdKaydet;
         private System.Windows.Forms.TextBox txtEmail;
-        private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
@@ -786,6 +785,7 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox6;
+        private DevExpress.XtraEditors.MarqueeProgressBarControl marqueeProgressBarControl1;
     }
 }
 

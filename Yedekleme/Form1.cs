@@ -118,12 +118,22 @@ namespace Yedekleme
 
         private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            pictureBox3.Hide();
+            InitializeMarqueeProgressBar();
+            marqueeProgressBarControl1.Hide();
         }
 
         private void backgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
 
+        }
+
+        private void InitializeMarqueeProgressBar()
+        {
+            // MarqueeProgressBarControl ayarları
+            MarqueeProgressBarControl marqueeProgressBar = new MarqueeProgressBarControl();
+            marqueeProgressBar.Properties.MarqueeAnimationSpeed = 200; // Animasyon hızını ayarlayın
+            marqueeProgressBar.Dock = DockStyle.Top;
+            this.Controls.Add(marqueeProgressBar);
         }
 
         private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
@@ -600,7 +610,7 @@ namespace Yedekleme
             //folderIdKaydet.Enabled = false;
             textBox3.BackColor = Color.White;
             textBox3.ForeColor = Color.Black;
-            textBox3.Text = "BYK Backup Software ";
+            textBox3.Text = "SQL Backup First Edition";
 
 
     
@@ -946,9 +956,6 @@ namespace Yedekleme
                                 _command = new SqlCommand(sql, _connection);
                                 _command.ExecuteNonQuery();
 
-                                Thread.Sleep(2000);
-
-
                             }
                             _connection.Close();
                             _connection.Dispose();
@@ -1002,9 +1009,9 @@ namespace Yedekleme
                 {
                     textBox3.BackColor = Color.White;
                     textBox3.ForeColor = Color.Black;
-                    Thread.Sleep(40000); 
+                    Thread.Sleep(28000); 
                     textBox3.Text = "Dosyalar Google Drive'a Gönderiliyor...";            
-                    timer2.Interval = 30000;
+                    timer2.Interval = 20000;
                     timer2.Start();
 
                 }
@@ -1262,13 +1269,12 @@ namespace Yedekleme
 
             string folderId = folderIdtxt.Text;
             UploadFilesToDrive(folderId);
-            Thread.Sleep(20000);
+            Thread.Sleep(30000);
             textBox3.Text = "";
             textBox3.BackColor = Color.White;
             textBox3.ForeColor = Color.Black;
-            textBox3.Text = "BYK Backup Software ";
+            textBox3.Text = "SQL Backup First Edition ";
             isNull = 0;
-
             string mailTo = txtEmail.Text;
             string emailPattern = @"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$";
             Regex regex = new Regex(emailPattern);
@@ -1278,7 +1284,6 @@ namespace Yedekleme
                 {
                     SendEmail(mailTo);
                 }
-
             }
             timer2.Stop();
             timer1.Start();
@@ -1568,7 +1573,7 @@ namespace Yedekleme
 
 
                     folderIdtxt.Text = "";
-                    MessageBox.Show("Drive bağlantısı kesilmiştir.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                  
                     driveBaglanti = 0;
                 }
                 else
@@ -1753,24 +1758,7 @@ namespace Yedekleme
             btnBaglantiKes.Enabled = true;
 
             cmbServerName.Items.Clear();
-            //DataTable sqlServerInstances = SqlDataSourceEnumerator.Instance.GetDataSources();
-
-
-            //foreach (DataRow row in sqlServerInstances.Rows)
-            //{
-            //    string serverName = Convert.ToString(row["ServerName"]);
-            //    string instanceName = Convert.ToString(row["InstanceName"]);
-
-            //    if (instanceName != "")
-            //    {
-
-            //        cmbServerName.Items.Add($"{serverName}\\{instanceName}");
-            //    }
-            //    else
-            //    {
-            //        cmbServerName.Items.Add($"{instanceName}");
-            //    }
-            //}
+     
 
             cmbServerName.Enabled = true;
 
@@ -1881,9 +1869,7 @@ namespace Yedekleme
 
             AddDataToIniFile(dosyaYolu, "DriveKlasörü", "Klasör", comboBox1.Text);
 
-
-
-            textBox3.Text = " Tüm ayarlar başarıyla kaydedildi.";
+            textBox3.Text = "Tüm Ayarlar Başarıyla Kaydedilmiştir.";
         }
 
         private void btnYedeklemeDisconnect_Click(object sender, EventArgs e)
@@ -1927,6 +1913,8 @@ namespace Yedekleme
                 textBoxLocation.Text = folderBrowserDialog1.SelectedPath;
             }
         }
+
+
     }
 }
 

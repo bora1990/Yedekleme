@@ -28,8 +28,6 @@ using IniParser.Model;
 using Timer = System.Threading.Timer;
 using System.Net;
 using System.Windows.Controls;
-using Yedekleme.Themes;
-
 using Path = System.IO.Path;
 using System.Configuration;
 using System.Security.Cryptography;
@@ -43,13 +41,17 @@ using System.Security.Principal;
 using DevExpress.XtraEditors;
 using DevExpress.Utils;
 using DevExpress.Utils.Gesture;
+using DevExpress.LookAndFeel;
+using MetroSet_UI.Controls;
+using MaterialSkin.Controls;
+using MaterialSkin;
 
 
 
 
 namespace Yedekleme
 {
-    public partial class Form1 : MetroForm
+    public partial class Form1 : MaterialForm
     {
         private SqlConnection _connection;
         private SqlCommand _command;
@@ -76,7 +78,7 @@ namespace Yedekleme
         private readonly DriveService service;
 
         private BackgroundWorker backgroundWorker;
-
+        private readonly MaterialSkinManager materialSkinManager;
         public Form1()
         {
            
@@ -85,9 +87,25 @@ namespace Yedekleme
             //gunler.
 
             InitializeComponent();
+
+
+            materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+
+            materialSkinManager.ColorScheme = new ColorScheme(
+                Primary.Blue600, Primary.Blue700,
+                Primary.Blue200, Accent.Orange100,
+                TextShade.WHITE
+            );
+
+
+
             Application.ApplicationExit += new EventHandler(this.OnApplicationExit);
 
             this.Load += new EventHandler(Form1_Load);
+
+          
 
             backgroundWorker = new BackgroundWorker();
             backgroundWorker.WorkerReportsProgress = true; // İlerleme raporlamasını etkinleştir
@@ -96,38 +114,6 @@ namespace Yedekleme
             backgroundWorker.RunWorkerCompleted += backgroundWorker_RunWorkerCompleted; // İş tamamlandığında yapılacakları tanımla
             backgroundWorker.RunWorkerAsync();
 
-        }
-
-        private void ApplyTheme(Color backColor, Color foreColor)
-        {
-            this.BackColor = backColor;
-            foreach (System.Windows.Forms.Control ctrl in this.Controls)
-            {
-                ctrl.BackColor = backColor;
-                ctrl.ForeColor = foreColor;
-            }
-        }
-
-        private void OnLightThemeButtonClicked(object sender, EventArgs e)
-        {
-
-
-            ApplyTheme(Themes.Theme.LightBackColor, Themes.Theme.LightForeColor);
-        }
-
-        private void OnDarkThemeButtonClicked(object sender, EventArgs e)
-        {
-            ApplyTheme(Themes.Theme.DarkBackColor, Themes.Theme.DarkForeColor);
-        }
-
-        private void OnColourThemeButtonClicked(object sender, EventArgs e)
-        {
-            ApplyTheme(Themes.Theme.ColourBackColor, Themes.Theme.ColourForeColor);
-        }
-
-        private void OnWhiteThemeButtonClicked(object sender, EventArgs e)
-        {
-            ApplyTheme(Themes.Theme.WhiteBackColor, Themes.Theme.WhiteForeColor);
         }
 
         private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -182,6 +168,7 @@ namespace Yedekleme
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            
 
             RegistryKey regkey = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
             regkey.SetValue("Yedekleme", Application.ExecutablePath);
@@ -199,9 +186,21 @@ namespace Yedekleme
             textBox1.Enabled = false;
             textBox2.Enabled = false;
             folderIdtxt.Visible = false;
+            btnBaglan.Visible = true;
+            btnGorevBasla.Visible = true;
+            btnYedeklemeDisconnect.Visible = false;
+            button2.Visible = true;
 
+            DateTimePick.Value= DateTime.Now;
 
-            
+           
+
+            if (cmbServerName.Text == "")
+            {
+              
+                btnBaglantiKes.Visible = false;
+            }
+
             //cmbServerName.Text = System.Net.Dns.GetHostName().ToUpper() + @"\SQLEXPRESS";
             //comboboxDatabase.SelectedIndex = 0;
 
@@ -510,16 +509,53 @@ namespace Yedekleme
 
             #endregion
 
+            #region KlasörKayıt
 
+
+            string dosya2 = "DriveKlasörü";
+            bool varMi2 = false;
+            foreach (string satir in satirlar)
+            {
+                // Eğer satır boşsa veya yorum satırıysa (örneğin ';' veya '#' ile başlıyorsa), atla
+                if (string.IsNullOrWhiteSpace(satir) || satir.StartsWith(";") || satir.StartsWith("#"))
+                    continue;
+
+                // Bölüm başlığına ulaşıldıysa, hedef bölümde olduğumuzu kontrol et
+                if (satir.Trim().Equals($"[{dosya2}]"))
+                {
+                    varMi2 = true; // hedefBolumde1 değişkenini true olarak ayarlayın
+                    continue;
+                }
+
+                // Eğer hedef bölümdeysek, değerleri alın
+                if (varMi2)
+                {
+                    string[] parcalar = satir.Split('='); // "=" ile ayrılmış ayarları parçalayın
+
+                    if (parcalar.Length == 2) // Doğru ayar uzunluğuna sahipse
+                    {
+                        string anahtar = parcalar[0].Trim(); // Anahtar kelimeyi alırken boşlukları temizleyin
+                        string deger = parcalar[1].Trim(); // Değeri alırken boşlukları temizleyin					
+
+                        if (anahtar == "Klasör")
+                        {
+                            comboBox1.Text = deger;
+                            break; // Aradığımız değeri bulduğumuzda döngüyü sonlandırabiliriz.
+                        }
+                    }
+                }
+            }
+
+            #endregion
 
             #region AyarlarıEntegreEtmek
             if (cmbServerName.Text != "" && textboxUser.Text != "" && txtPassword.Text != "" && textBox1.Text != "" && textBox2.Text != "")
             {
 
-                pictureBoxConnect_Click(sender, e);
+                btnBaglan_Click(sender, e);
 
-
-
+                btnBaglan.Visible = false;
+                btnBaglantiKes.Visible = true;
 
                 List<string> secilenAnahtarlar = new List<string>(); // İşaretlenecek anahtarlar listesi
 
@@ -557,16 +593,17 @@ namespace Yedekleme
                     }
                 }
 
-
-                pictureBoxBackup_Click(pictureBoxBackup, EventArgs.Empty);
-
+                btnGorevBasla_Click(btnGorevBasla, EventArgs.Empty);
 
             }
             #endregion
             //folderIdKaydet.Enabled = false;
             textBox3.BackColor = Color.White;
             textBox3.ForeColor = Color.Black;
-            textBox3.Text = "Copyright © Glopark ";
+            textBox3.Text = "BYK Backup Software ";
+
+
+    
         }
         private void InitializeNotifyIcon()
         {
@@ -607,156 +644,115 @@ namespace Yedekleme
         }
 
         //Servera Bağlanma
-        private void pictureBoxConnect_Click(object sender, EventArgs e)
-        {
-
-            try
-            {
-
-                if (textboxUser.Text == "" && txtPassword.Text == "")
-                {
-                    connectionstring = "Data Source=" + cmbServerName.Text.Trim() + ";Integrated Security=True;";
-                    _connection = new SqlConnection(connectionstring);
-                    _connection.Open();
-
-                    cmbServerName.Enabled = false;
-                    pictureBoxConnect.Visible = false;
-                    pictureBoxDisconnect.Visible = true;
-
-                    ConnectDisconnectVariation(sender, e);
-
-                }
-                else if (textboxUser.Text != "" && txtPassword.Text != "")
-                {
-                    try
-                    {
-                        connectionstring = "Data Source=" + cmbServerName.Text.Trim() + ";User Id=" + textboxUser.Text + ";Password=" + txtPassword.Text + ";";
-                        _connection = new SqlConnection(connectionstring);
-                        _connection.Open();
-                        cmbServerName.Enabled = false;
-                        ConnectDisconnectVariation(sender, e);
 
 
-                    }
-                    catch (Exception)
-                    {
-                        pictureBoxConnect.Enabled = true;
-                        pictureBoxConnect.Visible = true;
-                        pictureBoxDisconnect.Visible = false;
-                        pictureBoxDisconnect.Enabled = true;
-                    }
+        //private void pictureBoxConnect_Click(object sender, EventArgs e)
+        //{
 
-                }
+        //    try
+        //    {
 
+        //        if (textboxUser.Text == "" && txtPassword.Text == "")
+        //        {
+        //            connectionstring = "Data Source=" + cmbServerName.Text.Trim() + ";Integrated Security=True;";
+        //            _connection = new SqlConnection(connectionstring);
+        //            _connection.Open();
 
+        //            cmbServerName.Enabled = false;
+        //            pictureBoxConnect.Visible = false;
+        //            pictureBoxDisconnect.Visible = true;
 
+        //            ConnectDisconnectVariation(sender, e);
 
-
-                checkedListBox1.Items.Clear();
-                sql = "select Name from master.sys.databases d WHERE d.database_id > 4; ";
-                _command = new SqlCommand(sql, _connection);
-                _reader = _command.ExecuteReader();
-
-                while (_reader.Read())
-                {
-                    //comboboxDatabase.Items.Add(_reader[0].ToString());
-                    checkedListBox1.Items.Add(_reader[0]);
-                }
-                _connection.Close();
-
-
-            }
-            catch (Exception)
-            {
-                pictureBoxConnect.Visible = true;
-                pictureBoxDisconnect.Visible = false;
-                MessageBox.Show("Bağlantı hatası", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
+        //        }
+        //        else if (textboxUser.Text != "" && txtPassword.Text != "")
+        //        {
+        //            try
+        //            {
+        //                connectionstring = "Data Source=" + cmbServerName.Text.Trim() + ";User Id=" + textboxUser.Text + ";Password=" + txtPassword.Text + ";";
+        //                _connection = new SqlConnection(connectionstring);
+        //                _connection.Open();
+        //                cmbServerName.Enabled = false;
+        //                ConnectDisconnectVariation(sender, e);
 
 
-            //BaglanBaglantıKoparButon(sender, e);
+        //            }
+        //            catch (Exception)
+        //            {
+        //                pictureBoxConnect.Enabled = true;
+        //                pictureBoxConnect.Visible = true;
+        //                pictureBoxDisconnect.Visible = false;
+        //                pictureBoxDisconnect.Enabled = true;
+        //            }
 
-        }
+        //        }
 
+        //        checkedListBox1.Items.Clear();
+        //        sql = "select Name from master.sys.databases d WHERE d.database_id > 4; ";
+        //        _command = new SqlCommand(sql, _connection);
+        //        _reader = _command.ExecuteReader();
+
+        //        while (_reader.Read())
+        //        {
+        //            //comboboxDatabase.Items.Add(_reader[0].ToString());
+        //            checkedListBox1.Items.Add(_reader[0]);
+        //        }
+        //        _connection.Close();
+
+
+        //    }
+        //    catch (Exception)
+        //    {
+        //        pictureBoxConnect.Visible = true;
+        //        pictureBoxDisconnect.Visible = false;
+        //        MessageBox.Show("Bağlantı hatası", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //    }
+
+
+        //    //BaglanBaglantıKoparButon(sender, e);
+
+        //}
         private void ConnectDisconnectVariation(object sender, EventArgs e)
         {
-            PictureBox clickedPictureBox = sender as PictureBox; // Tıklanan PictureBox'ı al
+            SimpleButton clickedPictureBox = sender as SimpleButton; // Tıklanan PictureBox'ı al
 
-            if (clickedPictureBox == pictureBoxConnect)
+            if (clickedPictureBox == btnBaglan)
             {
-                pictureBoxConnect.Visible = false;
-                pictureBoxDisconnect.Visible = true;
+                btnBaglan.Visible = false;
+                btnBaglantiKes.Visible = true;
             }
-            else if (clickedPictureBox == pictureBoxDisconnect)
+            else if (clickedPictureBox == btnBaglantiKes)
             {
-                pictureBoxConnect.Visible = true;
-                pictureBoxDisconnect.Visible = false;
+                btnBaglan.Visible = true;
+                btnBaglantiKes.Visible = false;
             }
         }
+
+        private void DriveBaglanBaglantiKes(object sender, EventArgs e)
+        {
+            System.Windows.Forms.Button clickedPictureBox = sender as System.Windows.Forms.Button; // Tıklanan PictureBox'ı al
+
+            if (clickedPictureBox == button2)
+            {
+                button2.Visible = false;
+                btnDriveDisconnect.Visible = true;
+            }
+            else if (clickedPictureBox == btnDriveDisconnect)
+            {
+                btnDriveDisconnect.Visible = false;
+                button2.Visible = true;
+            }
+        }
+
+
         //Serverdan Bağlantı Koparma
-        private void pictureBoxDisconnect_Click(object sender, EventArgs e)
-        {
-            cmbServerName.Enabled = true;
-            pictureBoxConnect.Enabled = true;
-            pictureBoxDisconnect.Enabled = false;
 
-            cmbServerName.Items.Clear();
-            DataTable sqlServerInstances = SqlDataSourceEnumerator.Instance.GetDataSources();
-
-
-            foreach (DataRow row in sqlServerInstances.Rows)
-            {
-                string serverName = Convert.ToString(row["ServerName"]);
-                string instanceName = Convert.ToString(row["InstanceName"]);
-
-                if (instanceName != "")
-                {
-
-                    cmbServerName.Items.Add($"{serverName}\\{instanceName}");
-                }
-                else
-                {
-                    cmbServerName.Items.Add($"{instanceName}");
-                }
-            }
-
-            cmbServerName.Enabled = true;
-
-            textBoxLocation.Clear();
-
-            MessageBox.Show("Sunucuyla bağlantı kesildi.");
-
-            //textBoxLocation.Text = Application.StartupPath;
-
-            checkedListBox1.Items.Clear();
-            textBoxLocation.Enabled = true;
-            cmbServerName.Enabled = true;
-
-            PictureBox clickedPictureBox = sender as PictureBox; // Tıklanan PictureBox'ı al
-
-            if (clickedPictureBox == pictureBoxDisconnect)
-            {
-                pictureBoxDisconnect.Visible = false;
-                pictureBoxConnect.Visible = true;
-            }
-
-
-        }
-
-        //Folder Açma
-        public void pictureBoxBrowse_Click(object sender, EventArgs e)
-        {
-
-
-            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
-            {
-                textBoxLocation.Text = folderBrowserDialog1.SelectedPath;
-            }
-        }
 
         //Ayarları Kaydet / Drivesız
         public void pictureBoxBackup_Click(object sender, EventArgs e)
         {
+
+            DisableAllControls(this);
 
             AyarlariKaydet();
 
@@ -812,8 +808,33 @@ namespace Yedekleme
 
             folderIdKaydet.Enabled = true;
 
+            textBox3.Text = " Tüm ayarlar başarıyla kaydedildi.";
 
-            textBox3.Text = "Tüm ayarlar başarıyla kaydedilmiştir.";
+        }
+
+        private void DisableAllControls(System.Windows.Forms.Control control)
+        {
+            cmbServerName.Enabled=false;
+            textboxUser.Enabled=false;
+            txtPassword.Enabled=false;
+            checkedListBox1.Enabled = false;
+            textBoxLocation.Enabled=false;
+            btnDriveDisconnect.Enabled = false;
+            folderIdKaydet.Enabled = false;
+            comboBox1.Enabled = false;
+            txtEmail.Enabled = false;
+            textBox2.Enabled = false;
+            textBox1.Enabled = false;
+            btnBaglantiKes.Enabled = false;
+            button1.Enabled = false;
+            folderIdKaydet.Enabled = false;
+            DateTimePick.Enabled=false;
+            button3.Enabled = false;   
+            button4.Enabled=false;
+            btnPlan.Enabled = false;
+           
+
+
 
         }
 
@@ -925,6 +946,8 @@ namespace Yedekleme
                                 _command = new SqlCommand(sql, _connection);
                                 _command.ExecuteNonQuery();
 
+                                Thread.Sleep(2000);
+
 
                             }
                             _connection.Close();
@@ -979,10 +1002,9 @@ namespace Yedekleme
                 {
                     textBox3.BackColor = Color.White;
                     textBox3.ForeColor = Color.Black;
-
-                    textBox3.Text = "Dosyalar Google Drive'a Gönderiliyor...";
-                    Thread.Sleep(45000);
-                    timer2.Interval = 45000;
+                    Thread.Sleep(40000); 
+                    textBox3.Text = "Dosyalar Google Drive'a Gönderiliyor...";            
+                    timer2.Interval = 30000;
                     timer2.Start();
 
                 }
@@ -990,7 +1012,7 @@ namespace Yedekleme
                 {
                     textBox3.BackColor = Color.White;
                     textBox3.ForeColor = Color.Black;
-                    textBox3.Text = "Copyright © Glopark ";
+                    textBox3.Text = "Tüm ayarlar başarıyla kaydedilmiştir. ";
                     timer2.Stop();
                     Thread.Sleep(60000);
                     timer1.Start();
@@ -1137,7 +1159,7 @@ namespace Yedekleme
                             request.Fields = "id";
 
                             // Dosya yükleme işlemi gerçekleştiriliyor
-                            await request.UploadAsync();
+                             request.Upload();
 
                         }
 
@@ -1199,6 +1221,9 @@ namespace Yedekleme
                 }
 
             }
+
+            DriveBaglanBaglantiKes(sender,e);
+
         }
 
         static void AddDataToIniFile(string filePath, string sectionName, string key, string value)
@@ -1237,11 +1262,11 @@ namespace Yedekleme
 
             string folderId = folderIdtxt.Text;
             UploadFilesToDrive(folderId);
-            Thread.Sleep(15000);
+            Thread.Sleep(20000);
             textBox3.Text = "";
             textBox3.BackColor = Color.White;
             textBox3.ForeColor = Color.Black;
-            textBox3.Text = "Copyright © Glopark ";
+            textBox3.Text = "BYK Backup Software ";
             isNull = 0;
 
             string mailTo = txtEmail.Text;
@@ -1331,6 +1356,7 @@ namespace Yedekleme
                             string folder;
                             folder = textBoxLocation + @"\" + Convert.ToString(databasechecked) + ".bak";
 
+                            
 
                             sql = $@"BACKUP DATABASE {Convert.ToString(databasechecked)} TO DISK ='{textBoxLocation.Text.Trim()}\{Convert.ToString(databasechecked)} -{DateTime.Now.ToString("dddd, dd MMMM yyyy HH-mm-ss")}.bak'";
 
@@ -1554,6 +1580,9 @@ namespace Yedekleme
             {
                 MessageBox.Show("Drive bağlantısı kesilirken bir hata oluştu: " + ex.Message, "Hata", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            DriveBaglanBaglantiKes(sender, e);
+            
         }
 
         private void folderIdKaydet_Click(object sender, EventArgs e)
@@ -1566,7 +1595,7 @@ namespace Yedekleme
             {
                 if (driveBaglanti == 1)
                 {
-                    button2.PerformClick();
+                    button2_Click(sender,e);
 
                     MessageBox.Show("Kayıt başarıyla yapıldı.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -1575,18 +1604,9 @@ namespace Yedekleme
                     MessageBox.Show("Drive bağlantısı yapınız.", "Bilgi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
+
+            
         }
-
-        private void metroSetDefaultButton1_Click(object sender, EventArgs e)
-        {
-            OnDarkThemeButtonClicked(sender, e);
-
-        }
-
-        private void metroSetDefaultButton2_Click(object sender, EventArgs e)
-        {
-            OnLightThemeButtonClicked(sender, e);
-        }    
 
         /// <summary>
         /// Bilgisayardaki belirtilen gün sayı önceki yedek dosyalarını siler.
@@ -1664,19 +1684,248 @@ namespace Yedekleme
             }
         }
 
-        private void metroSetDefaultButton3_Click(object sender, EventArgs e)
+        private void btnBaglan_Click(object sender, EventArgs e)
         {
-            OnColourThemeButtonClicked(sender, e);
+            try
+            {
+
+                if (textboxUser.Text == "" && txtPassword.Text == "")
+                {
+                    connectionstring = "Data Source=" + cmbServerName.Text.Trim() + ";Integrated Security=True;";
+                    _connection = new SqlConnection(connectionstring);
+                    _connection.Open();
+
+                    cmbServerName.Enabled = false;
+                    
+
+                    ConnectDisconnectVariation(sender, e);
+
+                }
+                else if (textboxUser.Text != "" && txtPassword.Text != "")
+                {
+                    try
+                    {
+                        connectionstring = "Data Source=" + cmbServerName.Text.Trim() + ";User Id=" + textboxUser.Text + ";Password=" + txtPassword.Text + ";";
+                        _connection = new SqlConnection(connectionstring);
+                        _connection.Open();
+                        cmbServerName.Enabled = false;
+                        ConnectDisconnectVariation(sender, e);
+
+
+                    }
+                    catch (Exception)
+                    {
+                        btnBaglan.Enabled = true;
+                        btnBaglan.Visible = true;
+                        btnDriveDisconnect.Visible = false;
+                        btnDriveDisconnect.Enabled = true;
+                    }
+
+                }
+
+                checkedListBox1.Items.Clear();
+                sql = "select Name from master.sys.databases d WHERE d.database_id > 4; ";
+                _command = new SqlCommand(sql, _connection);
+                _reader = _command.ExecuteReader();
+
+                while (_reader.Read())
+                {
+                    //comboboxDatabase.Items.Add(_reader[0].ToString());
+                    checkedListBox1.Items.Add(_reader[0]);
+                }
+                _connection.Close();
+
+
+            }
+            catch (Exception)
+            {
+                btnBaglan.Visible = true;
+                btnBaglantiKes.Visible = false;
+                MessageBox.Show("Bağlantı hatası", "Hata", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
         }
 
-        private void metroSetDefaultButton4_Click(object sender, EventArgs e)
+        private void btnBaglantiKes_Click(object sender, EventArgs e)
         {
-            OnWhiteThemeButtonClicked(sender, e);
+            cmbServerName.Enabled = true;
+            btnBaglan.Enabled = true;
+            btnBaglantiKes.Enabled = true;
+
+            cmbServerName.Items.Clear();
+            //DataTable sqlServerInstances = SqlDataSourceEnumerator.Instance.GetDataSources();
+
+
+            //foreach (DataRow row in sqlServerInstances.Rows)
+            //{
+            //    string serverName = Convert.ToString(row["ServerName"]);
+            //    string instanceName = Convert.ToString(row["InstanceName"]);
+
+            //    if (instanceName != "")
+            //    {
+
+            //        cmbServerName.Items.Add($"{serverName}\\{instanceName}");
+            //    }
+            //    else
+            //    {
+            //        cmbServerName.Items.Add($"{instanceName}");
+            //    }
+            //}
+
+            cmbServerName.Enabled = true;
+
+            textBoxLocation.Clear();
+
+        
+
+            //textBoxLocation.Text = Application.StartupPath;
+
+            checkedListBox1.Items.Clear();
+            textBoxLocation.Enabled = true;
+            cmbServerName.Enabled = true;
+
+            SimpleButton clickedPictureBox = sender as SimpleButton; // Tıklanan PictureBox'ı al
+
+            if (clickedPictureBox == btnBaglantiKes)
+            {
+                btnBaglantiKes.Visible = false;
+                btnBaglan.Visible = true;
+            }
+
+            DriveBaglanBaglantiKes(sender, e);
+
+
         }
 
-        private void timer3_Tick(object sender, EventArgs e)
+        private void SetControlsEnabled(System.Windows.Forms.Control control, bool enabled)
         {
-            labelTime.Text = DateTime.Now.ToString("dd MMMM yyyy HH:mm:ss");
+            cmbServerName.Enabled = true;
+            textboxUser.Enabled = true;
+            txtPassword.Enabled = true;
+            checkedListBox1.Enabled = true;
+            textBoxLocation.Enabled = true;
+            btnDriveDisconnect.Enabled = true;
+            folderIdKaydet.Enabled = true;
+            comboBox1.Enabled = true;
+         
+            txtEmail.Enabled = true;
+       
+            btnBaglantiKes.Enabled = true;
+            button1.Enabled = true;
+            folderIdKaydet.Enabled = true;
+            DateTimePick.Enabled = true;
+            button3.Enabled = true;
+            button4.Enabled = true;
+            btnPlan.Enabled = true;
+        }
+
+        private void btnGorevBasla_Click(object sender, EventArgs e)
+        {
+            DisableAllControls(this);
+
+            btnGorevBasla.Enabled = true;
+            btnGorevBasla.Visible = false;
+            btnYedeklemeDisconnect.Visible = true;
+            metroSetControlBox2.Enabled = true;
+
+            button2_Click(sender, e);
+
+            AyarlariKaydet();
+
+            string dosyaYolu = AppDomain.CurrentDomain.BaseDirectory + "Ayarlar.ini";
+
+            string kuruluSaat = textBox1.Text;
+            string iniIcerik = "[ZamanAyarları]\r\n";
+            iniIcerik += "KuruluSaat=" + kuruluSaat + "\r\n";
+            iniIcerik += "Gunler=" + textBox2.Text;
+
+            try
+            {
+                using (StreamWriter dosya = new StreamWriter(dosyaYolu))
+                {
+                    dosya.WriteLine(iniIcerik);
+                    for (int i = 0; i < checkedListBox1.Items.Count; i++)
+                    {
+
+                        // Her bir seçeneğin adını ve durumunu alın
+                        var seçenek = checkedListBox1.Items[i].ToString();
+                        var seçildiMi = checkedListBox1.GetItemChecked(i);
+
+                        // INI dosyasına seçeneği ekleyin
+                        dosya.WriteLine($"{seçenek}={seçildiMi}");
+                    }
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                // Diğer hatalar için burası çalışır
+                MessageBox.Show("Beklenmeyen bir hata oluştu: " + ex.Message);
+            }
+            // .ini dosyasına veri ekleme işlevini çağırın
+
+    
+
+            AddDataToIniFile(dosyaYolu, "SunucuAyarları", "Sunucu", cmbServerName.Text);
+
+            AddDataToIniFile(dosyaYolu, "KullanıcıAyarları", "Kullanıcı", textboxUser.Text);
+
+            AddDataToIniFile(dosyaYolu, "SifreAyarları", "Sifre", txtPassword.Text);
+
+            AddDataToIniFile(dosyaYolu, "DosyaAyarları", "FolderId", folderIdtxt.Text);
+
+            AddDataToIniFile(dosyaYolu, "DosyaYolu", "Yol", textBoxLocation.Text);
+
+            AddDataToIniFile(dosyaYolu, "MailAdresi", "Mail", txtEmail.Text);
+
+            AddDataToIniFile(dosyaYolu, "DriveKlasörü", "Klasör", comboBox1.Text);
+
+
+
+            textBox3.Text = " Tüm ayarlar başarıyla kaydedildi.";
+        }
+
+        private void btnYedeklemeDisconnect_Click(object sender, EventArgs e)
+        {
+            SetControlsEnabled(this, true);
+
+            btnGorevBasla.Enabled = true;
+            btnGorevBasla.Visible = true;
+            btnYedeklemeDisconnect.Visible = false;
+        }
+
+        private void cmbServerName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnFileDialog_Click(object sender, EventArgs e)
+        {
+
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            {
+                textBoxLocation.Text = folderBrowserDialog1.SelectedPath;
+            }
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            Plan plan = new Plan();
+            plan.ShowDialog();
+        }
+
+        private void pictureBox2_Click_1(object sender, EventArgs e)
+        {
+            button2_Click(this, new EventArgs());
+        }
+
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            {
+                textBoxLocation.Text = folderBrowserDialog1.SelectedPath;
+            }
         }
     }
 }
